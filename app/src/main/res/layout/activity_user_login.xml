@@ -13,63 +13,78 @@
     android:layout_height="match_parent"
     tools:context=".UserLogin">
 
-
-
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:id="@+id/login"
-            android:layout_marginTop="80dp"
-            />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:id="@+id/textInputLayoutUsername"
-            android:layout_below="@id/login"
-            android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
+            android:layout_height="match_parent">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="Username"
-                    android:id="@+id/username"
-                    style="@style/GreenText"
-                    android:gravity="center"
-                    android:layout_marginTop="20dp"
-                    />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:id="@+id/textInputLayoutPassword"
-            android:layout_below="@+id/textInputLayoutUsername"
-            android:layout_height="wrap_content">
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="Password"
-                    android:id="@+id/password"
-                    android:inputType="textPassword"
-                    style="@style/GreenText"
-                    android:gravity="center"
-                    android:layout_marginTop="20dp"
-                    />
-        </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="match_parent">
 
 
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:text="LOGIN"
-            android:gravity="center"
-            android:id="@+id/btnLogin"
-            android:layout_below="@id/textInputLayoutPassword"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="LOGIN"
+                            android:textSize="30dp"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:id="@+id/login"
+                            android:layout_marginTop="80dp"
+                            />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:id="@+id/textInputLayoutUsername"
+                            android:layout_below="@id/login"
+                            android:layout_height="wrap_content">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:hint="Username"
+                                    android:textColor="#ffffff"
+                                    android:id="@+id/username"
+                                    style="@style/GreenText"
+                                    android:gravity="center"
+                                    android:layout_marginTop="20dp"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:id="@+id/textInputLayoutPassword"
+                            android:layout_below="@+id/textInputLayoutUsername"
+                            android:layout_height="wrap_content">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="50dp"
+                                    android:hint="Password"
+                                    android:id="@+id/password"
+                                    android:inputType="textPassword"
+                                    android:textColor="#ffffff"
+                                    style="@style/GreenText"
+                                    android:gravity="center"
+                                    android:layout_marginTop="20dp"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="20dp"
+                            android:text="SUBMIT Credentials"
+                            android:gravity="center"
+                            android:textColor="#575757"
+                            android:textStyle="bold"
+                            android:background="@null"
+                            android:id="@+id/btnLogin"
+                            android:layout_below="@id/textInputLayoutPassword"/>
+
+                </RelativeLayout>
+
+        </ScrollView>
 </RelativeLayout>

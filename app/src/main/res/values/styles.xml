@@ -12,6 +12,7 @@
     <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_image</item>
     </style>
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <style name="GreenText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">#00FF00</item>
