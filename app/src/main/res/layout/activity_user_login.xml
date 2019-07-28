@@ -15,10 +15,11 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
 
 
@@ -27,7 +28,7 @@
                             android:layout_height="wrap_content"
                             android:text="LOGIN"
                             android:textSize="30dp"
-                            android:textColor="#ffffff"
+                            android:textColor="#000000"
                             android:textStyle="bold"
                             android:gravity="center"
                             android:id="@+id/login"
@@ -44,8 +45,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="50dp"
                                     android:hint="Username"
-                                    android:textColor="#ffffff"
                                     android:id="@+id/username"
+                                    android:textColor="#000000"
                                     style="@style/GreenText"
                                     android:gravity="center"
                                     android:layout_marginTop="20dp"
@@ -63,7 +64,7 @@
                                     android:hint="Password"
                                     android:id="@+id/password"
                                     android:inputType="textPassword"
-                                    android:textColor="#ffffff"
+                                    android:textColor="#000000"
                                     style="@style/GreenText"
                                     android:gravity="center"
                                     android:layout_marginTop="20dp"
@@ -78,9 +79,9 @@
                             android:layout_marginTop="20dp"
                             android:text="SUBMIT Credentials"
                             android:gravity="center"
-                            android:textColor="#575757"
+                            android:textColor="#ffffff"
                             android:textStyle="bold"
-                            android:background="@null"
+                            android:background="#cf5151"
                             android:id="@+id/btnLogin"
                             android:layout_below="@id/textInputLayoutPassword"/>
 

@@ -43,7 +43,7 @@ public class UserLogin extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (validation() == true){
+                if (validation()){
                     String userUsername = username.getText().toString().trim();
                     String userPassword = password.getText().toString().trim();
                     mAuth.signInWithEmailAndPassword(userUsername, userPassword)
