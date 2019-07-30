@@ -1,8 +1,17 @@
 package com.example.bankingsystemandroid;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.app.KeyguardManager;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,6 +19,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +34,14 @@ public class UserLogin extends AppCompatActivity {
     private FirebaseAuth mAuth;
     EditText username,password;
     Button btnLogin;
+    TextView fingerprintMessage;
+    AlertDialog.Builder alertDialogBuilder;
+    Intent intent;
+
+    //---------------
+    private FingerprintManager fingerprintManager;
+    private KeyguardManager keyguardManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +49,57 @@ public class UserLogin extends AppCompatActivity {
         setContentView(R.layout.activity_user_login);
         mAuth = FirebaseAuth.getInstance();
         init();
+
         loginCheck();
+
+        if(FirebaseAuth.getInstance().getCurrentUser() != null){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+                keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+
+                if(!fingerprintManager.isHardwareDetected()){
+                    Toast.makeText(this, "Fingerprint Scanner Not Detected. ", Toast.LENGTH_SHORT).show();
+                    FirebaseAuth.getInstance().signOut();
+                }else if(ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "Permission Not Granted. ", Toast.LENGTH_SHORT).show();
+                    FirebaseAuth.getInstance().signOut();
+                }
+                else if(!keyguardManager.isKeyguardSecure()){
+                    Toast.makeText(this, "Secure your phone with Phone Lock", Toast.LENGTH_SHORT).show();
+                    FirebaseAuth.getInstance().signOut();
+                }
+                else if(!fingerprintManager.hasEnrolledFingerprints()){
+                    Toast.makeText(this, "You should add atleast one fingerprint to use this feature. ", Toast.LENGTH_SHORT).show();
+                    FirebaseAuth.getInstance().signOut();
+                }
+                else{
+                    Toast.makeText(this, "Place your finger on scanner to start scanning. ", Toast.LENGTH_SHORT).show();
+                    FingerPrintHandler fingerPrintHandler = new FingerPrintHandler(this);
+                    fingerPrintHandler.startAuth(fingerprintManager, null);
+                }
+            }
+        }
+
+
     }
+
+
+
+
+
+
+
+
     private void init(){
+        alertDialogBuilder = new AlertDialog.Builder(this);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         btnLogin = findViewById(R.id.btnLogin);
+        fingerprintMessage = findViewById(R.id.fingerprintMessage);
+        intent = new Intent(UserLogin.this,EmployeeHome.class);
+        //username.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+
     }
 
     private void loginCheck(){
@@ -44,7 +107,7 @@ public class UserLogin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (validation()){
-                    String userUsername = username.getText().toString().trim();
+                    final String userUsername = username.getText().toString().trim();
                     String userPassword = password.getText().toString().trim();
                     mAuth.signInWithEmailAndPassword(userUsername, userPassword)
                             .addOnCompleteListener(UserLogin.this, new OnCompleteListener<AuthResult>() {
@@ -52,14 +115,27 @@ public class UserLogin extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        Toast.makeText(UserLogin.this, "Authentication success.",
-                                                Toast.LENGTH_SHORT).show();
+
+
+                                        startActivity(intent);
+                                        finish();
                                         //updateUI(user);
                                     } else {
                                         // If sign in fails, display a message to the user.
-                                        Toast.makeText(UserLogin.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
+                                        /*Toast.makeText(UserLogin.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();*/
+                                        alertDialogBuilder.setTitle("Login Failed");
+                                        alertDialogBuilder.setMessage("Enter Correct Credentials.");
+                                        alertDialogBuilder.setCancelable(false)
+                                                .setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog,int id) {
+                                                        // if this button is clicked, close
+                                                        // current activity
+
+                                                    }
+                                                });
+                                        alertDialogBuilder.create();
+                                        alertDialogBuilder.show();
                                         //updateUI(null);
                                     }
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/transaction"
+        android:icon="@drawable/transaction"
+        android:title="Transfer Money"/>
+
+
+    <item
+        android:id="@+id/navigation_artists"
+        android:icon="@drawable/bankstatement"
+        android:title="Bank Statement"/>
+</menu>

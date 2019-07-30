@@ -72,18 +72,27 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
 
-
                         <Button
+                            android:id="@+id/btnLogin"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
+                            android:layout_below="@id/textInputLayoutPassword"
                             android:layout_marginTop="20dp"
-                            android:text="SUBMIT Credentials"
-                            android:gravity="center"
-                            android:textColor="#ffffff"
-                            android:textStyle="bold"
                             android:background="#cf5151"
-                            android:id="@+id/btnLogin"
-                            android:layout_below="@id/textInputLayoutPassword"/>
+                            android:clickable="false"
+                            android:gravity="center"
+                            android:text="SUBMIT Credentials"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/btnLogin"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:id="@+id/fingerprintMessage"
+                            />
 
                 </RelativeLayout>
 
