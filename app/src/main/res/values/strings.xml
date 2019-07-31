@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BankingSystemAndroid</string>
+    <string-array name="titles">
+        <item>Home</item>
+        <item>Transfer</item>
+        <item>Bank Statement</item>
+        <item>Add User</item>
+        <item>Profile</item>
+
+    </string-array>
 </resources>
