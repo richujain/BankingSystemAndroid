@@ -8,22 +8,7 @@
     android:id="@+id/containerParent"
     tools:context=".EmployeeHome">
 
-    <!--
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/container"
-        android:layout_height="wrap_content">
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:id="@+id/navigationView"
-            android:layout_height="wrap_content"
-            app:menu="@menu/employee_navigation_bar_items">
 
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-    </FrameLayout>
-    -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
