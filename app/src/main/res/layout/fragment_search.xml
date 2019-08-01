@@ -5,11 +5,45 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Search"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:layout_marginTop="50dp"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:text="Search Customer"
+        android:id="@+id/heading"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/searchb"
+        android:layout_marginTop="75dp"
+        android:layout_below="@id/heading"
+        android:id="@+id/search"
+        android:layout_alignParentRight="true"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutUsername"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/heading"
+        android:layout_toLeftOf="@id/search"
+        android:layout_marginTop="50dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Account Number"
+            android:id="@+id/accountNumber"
+            android:textColor="#000000"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
 
 </RelativeLayout>
