@@ -24,7 +24,8 @@ public class ProfileFragment extends Fragment {
         //like if the class is HomeFragment it should have R.layout.home_fragment
         //if it is DashboardFragment it should have R.layout.fragment_dashboard
         myFragmentView = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        Glide.with(getContext()).load(R.drawable.home)
+                .into((ImageView) myFragmentView.findViewById(R.id.profilePicture));
         return myFragmentView;
     }
 
