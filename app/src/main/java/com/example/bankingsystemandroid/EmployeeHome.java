@@ -1,10 +1,14 @@
 package com.example.bankingsystemandroid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -77,6 +81,34 @@ public class EmployeeHome extends AppCompatActivity  {
        // BottomNavigationView navigation = findViewById(R.id.bottomBar);
         //navigation.setOnNavigationItemSelectedListener((BottomNavigationView.OnNavigationItemSelectedListener) EmployeeHome.this);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.employee_home_page,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int resId = item.getItemId();
+        if(resId == R.id.rateUs){
+
+        }
+        switch (resId){
+            case R.id.rateUs:
+                Toast.makeText(this, "Clicked on Rate Us", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.contactUs:
+                Toast.makeText(this, "Clicked on Contact Us", Toast.LENGTH_SHORT).show();
+                break;
+                default:
+                    Toast.makeText(this, "Invalid Input", Toast.LENGTH_SHORT).show();
+        }
+        //return super.onOptionsItemSelected(item);
+        return true;
+    }
+
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
