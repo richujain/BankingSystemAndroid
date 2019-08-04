@@ -1,13 +1,18 @@
 package com.example.bankingsystemandroid;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.icu.util.LocaleData;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Telephony;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +22,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.face.FirebaseVisionFace;
@@ -32,10 +40,14 @@ public class RateUs extends BaseActivity {
     private ImageView myImageView;
     private TextView myTextView;
     private Bitmap myBitmap;
+    String userEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_us);
+        userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        Toast.makeText(this, ""+userReview, Toast.LENGTH_SHORT).show();
         myTextView = findViewById(R.id.textView);
         myImageView = findViewById(R.id.imageView);
         userReview = findViewById(R.id.userReview);
@@ -44,31 +56,46 @@ public class RateUs extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if(myTextView.getText().toString().trim().isEmpty()){
-                    showAlert("Error","Image View is Empty.");
+                    showAlert(RateUs.this,"Error","Couldn't trace any face. Try Again With a New Image.");
                 }
                 else if(userReview.getText().toString().trim().isEmpty()){
-                    showAlert("Error","Empty Review Field");
+                    showAlert(RateUs.this,"Error","Empty Review Field");
                 }
                 else{
-                    //Add review to the database.
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("reviews");
+                    String id = myRef.push().getKey();
+                    String secondID = myRef.push().getKey();
+
+
+                    String rating = myTextView.getText().toString().trim();
+                    String reviewMessage = userReview.getText().toString();
+                    Toast.makeText(RateUs.this, "start"+myRef, Toast.LENGTH_SHORT).show();
+                    myRef.child(id).child("email").child(secondID).child("rating").setValue(rating);
+                    //myRef.child(id).child(userEmail).child(secondID).child("rating").setValue(rating);
+                    //myRef.child(id).child(userEmail).child(secondID).child("review").setValue(reviewMessage);
+                    startActivity(new Intent(RateUs.this,EmployeeHome.class));
                 }
             }
         });
     }
+    private void showAlert(Context context,String title,String message){
+        android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(
+                context);
 
-    private void showAlert(String title,String message){
-        alertDialogBuilder.setTitle(title);
-        alertDialogBuilder.setMessage(message);
-        alertDialogBuilder.setCancelable(false)
-                .setPositiveButton("OK",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        // if this button is clicked, close
-                        // current activity
+        alertDialog.setTitle("ERROR");
 
+        alertDialog.setMessage(message);
+
+
+        alertDialog.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        dialog.cancel();
                     }
                 });
-        alertDialogBuilder.create();
-        alertDialogBuilder.show();
+        alertDialog.show();
     }
 
 

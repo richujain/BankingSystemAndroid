@@ -5,12 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.CancellationSignal;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
 public class FingerPrintHandler extends FingerprintManager.AuthenticationCallback {
     private Context context;
+    CancellationSignal cancellationSignal = new CancellationSignal();
     public FingerPrintHandler(Context context) {
         this.context = context;
     }
@@ -28,7 +31,22 @@ public class FingerPrintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationFailed() {
         this.update("Authentication Failed. ",false);
+        //Button btnLogin = ((Activity)context).findViewById(R.id.btnLogin);
+        //btnLogin.setVisibility(View.VISIBLE);
+        //cancellationSignal.cancel();
     }
+/*
+    public void stopAuth(FingerprintManager fingerprintManager,FingerprintManager.CryptoObject cryptoObject){
+        CancellationSignal cancellationSignal =  new CancellationSignal();
+        cancellationSignal.cancel();
+        fingerprintManager.authenticate(cryptoObject,cancellationSignal,0,this,null);
+    }
+
+    public void stopAuth(){
+        cancellationSignal.cancel();
+    }
+
+*/
 
     @Override
     public void onAuthenticationHelp(int helpCode, CharSequence helpString) {
@@ -39,6 +57,8 @@ public class FingerPrintHandler extends FingerprintManager.AuthenticationCallbac
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         this.update("Authentication successful",true);
     }
+
+
 
     private void update(String s, boolean b) {
         TextView fingerprintMessage = ((Activity)context).findViewById(R.id.fingerprintMessage);
