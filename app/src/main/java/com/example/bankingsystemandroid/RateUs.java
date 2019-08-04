@@ -21,11 +21,6 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 
 import java.util.List;
 
-import static com.example.bankingsystemandroid.BaseActivity.CAMERA;
-import static com.example.bankingsystemandroid.BaseActivity.SELECT_PHOTO;
-import static com.example.bankingsystemandroid.BaseActivity.TAKE_PHOTO;
-import static com.example.bankingsystemandroid.BaseActivity.WRITE_STORAGE;
-
 public class RateUs extends BaseActivity {
 
     private ImageView myImageView;
@@ -153,27 +148,28 @@ public class RateUs extends BaseActivity {
 
 //Print “Smile:” to the TextView//
 
-            result.append("Smile: ");
-
+            smilingProbability = smilingProbability*100;
+            int smile = (int) smilingProbability;
+            result.append("Rating : "+smile);
 //If the probability is 0.5 or higher...//
-
-            if(smilingProbability < 0.15){
-                result.append("No \nProbability: " + smilingProbability);
+            /*
+            if(smilingProbability < 0.25){
+                result.append("No \nRating: " + smile);
             }
             else if(smilingProbability < 0.5){
-                result.append("Yes \nProbability: " + smilingProbability);
+                result.append("Yes \nRating: " + smile);
             }
             else if (smilingProbability < 0.7) {
 
 //...print the following//
 
-                result.append("Yes \nProbability: " + smilingProbability);
+                result.append("Yes \nRating: " + smile);
 
 //If the probability is 0.4 or lower...//
 
             }
             else  if (smilingProbability < 1){
-                result.append("100 % Yes \nProbability: " + smilingProbability);
+                result.append("Yes \nRating: " + smile);
             }
             else {
 
@@ -181,6 +177,7 @@ public class RateUs extends BaseActivity {
 
                 result.append("No");
             }
+            */
             /*
             result.append("\n\nRight eye: ");
 
