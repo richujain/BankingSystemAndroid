@@ -1,12 +1,16 @@
 package com.example.bankingsystemandroid;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +26,9 @@ import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions;
 import java.util.List;
 
 public class RateUs extends BaseActivity {
-
+    private Button addRating;
+    AlertDialog.Builder alertDialogBuilder;
+    private EditText userReview;
     private ImageView myImageView;
     private TextView myTextView;
     private Bitmap myBitmap;
@@ -32,7 +38,37 @@ public class RateUs extends BaseActivity {
         setContentView(R.layout.activity_rate_us);
         myTextView = findViewById(R.id.textView);
         myImageView = findViewById(R.id.imageView);
+        userReview = findViewById(R.id.userReview);
+        addRating = findViewById(R.id.addRating);
+        addRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(myTextView.getText().toString().trim().isEmpty()){
+                    showAlert("Error","Image View is Empty.");
+                }
+                else if(userReview.getText().toString().trim().isEmpty()){
+                    showAlert("Error","Empty Review Field");
+                }
+                else{
+                    //Add review to the database.
+                }
+            }
+        });
+    }
 
+    private void showAlert(String title,String message){
+        alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setMessage(message);
+        alertDialogBuilder.setCancelable(false)
+                .setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        // if this button is clicked, close
+                        // current activity
+
+                    }
+                });
+        alertDialogBuilder.create();
+        alertDialogBuilder.show();
     }
 
 
@@ -150,7 +186,7 @@ public class RateUs extends BaseActivity {
 
             smilingProbability = smilingProbability*100;
             int smile = (int) smilingProbability;
-            result.append("Rating : "+smile);
+            result.append("Rating : "+smile+ " %");
 //If the probability is 0.5 or higher...//
             /*
             if(smilingProbability < 0.25){

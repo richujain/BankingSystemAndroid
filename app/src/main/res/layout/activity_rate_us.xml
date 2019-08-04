@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Add Rating"
-
+                android:id="@+id/addRating"
                 android:background="#32a852"/>
 
         </LinearLayout>
