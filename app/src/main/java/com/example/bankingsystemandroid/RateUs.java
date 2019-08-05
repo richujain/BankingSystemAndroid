@@ -40,14 +40,13 @@ public class RateUs extends BaseActivity {
     private ImageView myImageView;
     private TextView myTextView;
     private Bitmap myBitmap;
-    String userEmail;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate_us);
-        userEmail = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-        Toast.makeText(this, ""+userReview, Toast.LENGTH_SHORT).show();
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         myTextView = findViewById(R.id.textView);
         myImageView = findViewById(R.id.imageView);
         userReview = findViewById(R.id.userReview);
@@ -64,17 +63,22 @@ public class RateUs extends BaseActivity {
                 else{
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("reviews");
-                    String id = myRef.push().getKey();
-                    String secondID = myRef.push().getKey();
-
-
+                    String id = "";
+                    id = myRef.push().getKey();
                     String rating = myTextView.getText().toString().trim();
                     String reviewMessage = userReview.getText().toString();
-                    Toast.makeText(RateUs.this, "start"+myRef, Toast.LENGTH_SHORT).show();
-                    myRef.child(id).child("email").child(secondID).child("rating").setValue(rating);
-                    //myRef.child(id).child(userEmail).child(secondID).child("rating").setValue(rating);
-                    //myRef.child(id).child(userEmail).child(secondID).child("review").setValue(reviewMessage);
-                    startActivity(new Intent(RateUs.this,EmployeeHome.class));
+                    if(!userId.isEmpty() && !id.isEmpty()){
+                        myRef.child(id).child(userId).child("rating").setValue(rating);
+                        myRef.child(id).child(userId).child("review").setValue(reviewMessage);
+                        Toast.makeText(RateUs.this, "Rated Successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RateUs.this,EmployeeHome.class));
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(RateUs.this, "User Email is Empty", Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
             }
         });
@@ -82,12 +86,8 @@ public class RateUs extends BaseActivity {
     private void showAlert(Context context,String title,String message){
         android.app.AlertDialog.Builder alertDialog = new android.app.AlertDialog.Builder(
                 context);
-
-        alertDialog.setTitle("ERROR");
-
+        alertDialog.setTitle(title);
         alertDialog.setMessage(message);
-
-
         alertDialog.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
