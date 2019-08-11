@@ -5,7 +5,7 @@
 
 
 <TextView
-    android:id="@+id/txtDate"
+    android:id="@+id/tvDate"
     android:textSize="10sp"
     android:layout_marginTop="20dp"
     android:text="Date"
@@ -13,7 +13,7 @@ android:textColor="@color/gray"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/txtTransactionType"
+        android:id="@+id/tvTransactionType"
         android:text="TransactionType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -22,7 +22,7 @@ android:textColor="@color/gray"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/TxtAmount"
+        android:id="@+id/tvAmount"
         android:text="Amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
