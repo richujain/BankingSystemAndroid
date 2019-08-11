@@ -7,6 +7,18 @@ public class Transaction {
     int Amount;
     String typeofTrnasaction;
 
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public int getAmount() {
+        return Amount;
+    }
+
+    public String getTypeofTrnasaction() {
+        return typeofTrnasaction;
+    }
+
     public Transaction(Date transactionDate, int amount, String typeofTrnasaction) {
         this.transactionDate = transactionDate;
         Amount = amount;
