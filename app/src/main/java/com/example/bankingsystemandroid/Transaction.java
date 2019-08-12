@@ -5,7 +5,7 @@ import java.util.Date;
 public class Transaction {
     Date transactionDate;
     int Amount;
-    String typeofTrnasaction;
+    String typeofTransaction;
 
     public Date getTransactionDate() {
         return transactionDate;
@@ -16,12 +16,12 @@ public class Transaction {
     }
 
     public String getTypeofTrnasaction() {
-        return typeofTrnasaction;
+        return typeofTransaction;
     }
 
     public Transaction(Date transactionDate, int amount, String typeofTrnasaction) {
         this.transactionDate = transactionDate;
         Amount = amount;
-        this.typeofTrnasaction = typeofTrnasaction;
+        this.typeofTransaction = typeofTrnasaction;
     }
 }
