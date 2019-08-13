@@ -34,17 +34,17 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
+    <Button
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/searchb"
+        android:background="@drawable/searchb"
         android:layout_marginTop="75dp"
         android:layout_below="@id/heading"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:id="@+id/searchImage"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         />
-
 
 
 
