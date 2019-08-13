@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchedUserDetails">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Details"
+            android:gravity="center"
+            android:id="@+id/headingUserDetails"
+            android:textStyle="bold"
+            android:textSize="30sp"/>
+
+
+        <com.pkmmte.view.CircularImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/home"
+            android:layout_below="@+id/headingTextView"
+            android:layout_marginTop="30dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            app:border="true"
+            app:border_color="#EEEEEE"
+            android:id="@+id/profilePicture"
+            app:border_width="4dp"
+            app:shadow="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name : "
+            android:layout_below="@id/profilePicture"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerName"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address : "
+            android:layout_below="@id/customerName"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerAddress"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Birth Date : "
+            android:layout_below="@id/customerAddress"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerBirthDate"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email ID : "
+            android:layout_below="@id/customerBirthDate"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerEmailId"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Number : "
+            android:layout_below="@id/customerEmailId"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerContactNumber"
+            android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID Proof Number : "
+            android:layout_below="@id/customerContactNumber"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerPhotoAddressIdProof"
+            android:gravity="center"/>
+
+</RelativeLayout>
