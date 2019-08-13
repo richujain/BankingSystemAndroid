@@ -13,23 +13,12 @@
         android:text="Search Customer"
         android:id="@+id/heading"/>
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/searchb"
-        android:layout_marginTop="75dp"
-        android:layout_below="@id/heading"
-        android:layout_marginStart="20dp"
-        android:id="@+id/search"
-        android:layout_alignParentRight="true"
-        />
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutUsername"
         android:layout_height="wrap_content"
         android:layout_below="@id/heading"
-        android:layout_toLeftOf="@id/search"
+        android:layout_toLeftOf="@id/searchImage"
         android:layout_marginTop="50dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -45,7 +34,16 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/searchb"
+        android:layout_marginTop="75dp"
+        android:layout_below="@id/heading"
+        android:layout_marginStart="20dp"
+        android:id="@+id/searchImage"
+        android:layout_alignParentRight="true"
+        />
 
 
 
