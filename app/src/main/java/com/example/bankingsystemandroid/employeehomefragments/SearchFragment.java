@@ -36,11 +36,9 @@ public class SearchFragment extends Fragment {
         View layout = inflater.inflate(R.layout.fragment_search, container, false);
         accountNumber = layout.findViewById(R.id.accountNumber);
         search = layout.findViewById(R.id.searchImage);
-        Log.v("blah inside","blah inside");
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("blah","blah");
                 searchCustomer();
             }
         });
@@ -58,6 +56,9 @@ public class SearchFragment extends Fragment {
         String userAccountNumber = accountNumber.getText().toString().trim();
         if(userAccountNumber.isEmpty()){
             showAlert("Please Enter A Valid Account Number",this.getContext());
+        }
+        else{
+            
         }
     }
     private void showAlert(String message, Context context){

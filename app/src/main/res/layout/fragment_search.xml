@@ -46,6 +46,29 @@
         android:layout_alignParentEnd="true"
         />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/searchImage"
+        android:layout_marginTop="20dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Details"
+            android:gravity="center"
+            android:id="@+id/headingUserDetails"
+            android:textStyle="bold"
+            android:textSize="30sp"/>
+        
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp" />
+        
+        
+
+    </RelativeLayout>
+
 
 
 </RelativeLayout>
