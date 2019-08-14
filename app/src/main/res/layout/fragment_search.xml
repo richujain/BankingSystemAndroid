@@ -53,13 +53,14 @@
         android:scrollbars="horizontal|vertical"
         android:layout_below="@id/searchImage"
         android:layout_marginBottom="10dp"
-        android:id="@+id/scrollView"
+        android:id="@+id/scrollViewSearch"
         android:isScrollContainer="true"
         android:scrollbarAlwaysDrawVerticalTrack="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/relativeView"
         android:layout_marginTop="30dp">
 
         <TextView
@@ -141,6 +142,36 @@
             android:layout_marginTop="20dp"
             android:textSize="25sp"
             android:id="@+id/customerPhotoAddressIdProof"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID Proof Number : "
+            android:layout_below="@id/customerPhotoAddressIdProof"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerAccountNumber"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID Proof Number : "
+            android:layout_below="@id/customerAccountNumber"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerAccountBalance"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID Proof Number : "
+            android:layout_below="@id/customerAccountBalance"
+            android:layout_marginTop="20dp"
+            android:textSize="25sp"
+            android:id="@+id/customerBankBranch"
             android:gravity="center"/>
 
 
