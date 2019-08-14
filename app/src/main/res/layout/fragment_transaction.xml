@@ -5,13 +5,230 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#7057b5"
     tools:context=".BaseActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="557dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/buttonsLayout"
+        android:layout_marginTop="20dp"
+        android:weightSum="3">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deposit"
+            android:background="@drawable/roundedbuttondeposit"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundedbuttonwithdrawl"
+            android:text="Withdrawl"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transfer"
+            android:background="@drawable/roundedbuttontransfer"
+            android:layout_weight="1"/>
+    </LinearLayout>
+<!-- DEPOSIT -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonsLayout"
+        android:id="@+id/depositLayout"
+        android:visibility="invisible"
+        android:layout_marginTop="20dp">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutDepositAccountNumber"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Account Number"
+            android:id="@+id/depositAccountNumber"
+            android:textColor="@color/white"
+            android:inputType="text"
+            style="@style/GreenText"
+            android:gravity="center"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutDepositAmount"
+            android:layout_below="@+id/textInputLayoutDepositAccountNumber"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="Amount To Deposit"
+                android:id="@+id/depositAmount"
+                android:textColor="@color/white"
+                android:inputType="text"
+                style="@style/GreenText"
+                android:gravity="center"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deposit"
+            android:background="@drawable/roundedbutton"
+            android:layout_marginTop="20dp"
+            android:id="@+id/depositButton"
+            android:layout_below="@+id/textInputLayoutDepositAmount"/>
+
+    </RelativeLayout>
+    <!-- END OF DEPOSIT -->
+
+    <!-- WITHDRAWL -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonsLayout"
+        android:id="@+id/withdrawlLayout"
+        android:visibility="invisible"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutWithdawlAccountNumber"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="Account Number"
+                android:id="@+id/withdrawlAccountNumber"
+                android:textColor="@color/white"
+                android:inputType="text"
+                style="@style/GreenText"
+                android:gravity="center"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutWithdrawlAmount"
+            android:layout_below="@+id/textInputLayoutWithdawlAccountNumber"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="Account Number"
+                android:id="@+id/withdrawlAmount"
+                android:textColor="@color/white"
+                android:inputType="text"
+                style="@style/GreenText"
+                android:gravity="center"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Withdrawl"
+            android:id="@+id/withdrawlButton"
+            android:background="@drawable/roundedbutton"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textInputLayoutWithdrawlAmount"/>
+
+    </RelativeLayout>
+
+    <!-- END OF WOTHDRAWL -->
+
+    <!-- TRANSFER -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonsLayout"
+        android:id="@+id/transferLayout"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutTransferBeneficiaryAccountNumber"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="Beneficiary Account Number"
+                android:id="@+id/beneficiaryAccountNumber"
+                android:textColor="@color/white"
+                android:inputType="text"
+                style="@style/GreenText"
+                android:gravity="center"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutTransferRemitterAccountNumber"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textInputLayoutTransferBeneficiaryAccountNumber"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint=" Remitter Account Number"
+                android:id="@+id/remitterAccountNumber"
+                android:textColor="@color/white"
+                android:inputType="text"
+                style="@style/GreenText"
+                android:gravity="center"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:id="@+id/textInputLayoutTransferAmount"
+            android:layout_below="@+id/textInputLayoutTransferRemitterAccountNumber"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:hint="Transfer Amount"
+                android:id="@+id/transferAmount"
+                android:textColor="@color/white"
+                android:inputType="text"
+                style="@style/GreenText"
+                android:gravity="center"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transfer"
+            android:id="@+id/transferButton"
+            android:background="@drawable/roundedbutton"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textInputLayoutTransferAmount"/>
+
+    </RelativeLayout>
+
+    <!-- END OF TRANSFER -->
+
 
 </RelativeLayout>
