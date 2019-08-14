@@ -87,27 +87,40 @@ public class HomeFragment extends Fragment {
     }
 
     private void addUser(){
+        Boolean flag = validateDetails();
+    }
+    private Boolean validateDetails(){
         String thisFieldCannotBeEmpty = "This Field Cannot Be Empty";
+        Boolean flag = true;
         //Checking if the user left any field empty
         if(customerName.getText().toString().trim().length() == 0){
             customerName.setError(thisFieldCannotBeEmpty);
+            flag = false;
         }
         else if(customerBirthDate.getText().toString().trim().length() == 0){
             customerBirthDate.setError(thisFieldCannotBeEmpty);
+            flag = false;
         }
         else if(customerEmailId.getText().toString().trim().length() == 0){
             customerEmailId.setError(thisFieldCannotBeEmpty);
+            flag = false;
         }
         else if(customerContactNumber.getText().toString().trim().length() == 0){
             customerContactNumber.setError(thisFieldCannotBeEmpty);
+            flag = false;
         }
         else if(customerAddress.getText().toString().trim().length() == 0){
             customerAddress.setError(thisFieldCannotBeEmpty);
+            flag = false;
         }
         else if(customerPhotoAddressProofId.getText().toString().trim().length() == 0){
             customerPhotoAddressProofId.setError(thisFieldCannotBeEmpty);
+            flag = false;
         }
+        else{
 
+        }
+        return flag;
     }
 
 
