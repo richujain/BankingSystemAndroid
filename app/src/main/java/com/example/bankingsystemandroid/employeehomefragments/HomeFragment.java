@@ -14,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.bankingsystemandroid.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -89,7 +91,8 @@ public class HomeFragment extends Fragment {
     private void addUser(){
         Boolean flag = validateDetails();
         if(flag){
-            
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("message");
         }
     }
     private Boolean validateDetails(){
