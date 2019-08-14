@@ -78,7 +78,7 @@
                             android:layout_height="50dp"
                             android:layout_below="@id/textInputLayoutPassword"
                             android:layout_marginTop="20dp"
-                            android:background="#cf5151"
+                            android:background="@drawable/roundedbutton"
                             android:clickable="false"
                             android:gravity="center"
                             android:text="SUBMIT Credentials"

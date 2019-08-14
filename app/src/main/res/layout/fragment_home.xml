@@ -10,8 +10,6 @@
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutName"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="50dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -30,8 +28,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutAddress"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textInputLayoutName">
 
@@ -52,8 +48,6 @@
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutBirthDate"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_below="@id/textInputLayoutAddress">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -72,8 +66,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:id="@+id/textInputLayoutContactNumber"
         android:layout_height="wrap_content"
         android:layout_below="@id/textInputLayoutBirthDate">
@@ -94,8 +86,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutEmailId"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textInputLayoutContactNumber">
 
@@ -116,8 +106,6 @@
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutphotoAddressIdProof"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_below="@id/textInputLayoutEmailId">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -134,8 +122,6 @@
     </com.google.android.material.textfield.TextInputLayout>
     <Button
         android:layout_width="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textInputLayoutphotoAddressIdProof"
         android:layout_marginTop="20dp"
