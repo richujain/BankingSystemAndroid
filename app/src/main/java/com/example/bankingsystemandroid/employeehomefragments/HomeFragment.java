@@ -87,6 +87,26 @@ public class HomeFragment extends Fragment {
     }
 
     private void addUser(){
+        String thisFieldCannotBeEmpty = "This Field Cannot Be Empty";
+        //Checking if the user left any field empty
+        if(customerName.getText().toString().trim().length() == 0){
+            customerName.setError(thisFieldCannotBeEmpty);
+        }
+        else if(customerBirthDate.getText().toString().trim().length() == 0){
+            customerBirthDate.setError(thisFieldCannotBeEmpty);
+        }
+        else if(customerEmailId.getText().toString().trim().length() == 0){
+            customerEmailId.setError(thisFieldCannotBeEmpty);
+        }
+        else if(customerContactNumber.getText().toString().trim().length() == 0){
+            customerContactNumber.setError(thisFieldCannotBeEmpty);
+        }
+        else if(customerAddress.getText().toString().trim().length() == 0){
+            customerAddress.setError(thisFieldCannotBeEmpty);
+        }
+        else if(customerPhotoAddressProofId.getText().toString().trim().length() == 0){
+            customerPhotoAddressProofId.setError(thisFieldCannotBeEmpty);
+        }
 
     }
 
