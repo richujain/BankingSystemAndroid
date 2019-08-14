@@ -120,6 +120,7 @@ public class HomeFragment extends Fragment {
             String birthDate = customerBirthDate.getText().toString();
             String address = customerAddress.getText().toString();
             String contactNumber = customerContactNumber.getText().toString();
+            String emailId = customerEmailId.getText().toString();
             String photoAddressIdProof = customerPhotoAddressProofId.getText().toString();
             String accountType = radioButton.getText().toString();
             String accountBalance = customerAccountBalance.getText().toString();
@@ -128,6 +129,7 @@ public class HomeFragment extends Fragment {
             myRef.child(""+accountNumber).child("name").setValue(name);
             myRef.child(""+accountNumber).child("birthdate").setValue(birthDate);
             myRef.child(""+accountNumber).child("address").setValue(address);
+            myRef.child(""+accountNumber).child("emailid").setValue(emailId);
             myRef.child(""+accountNumber).child("contactnumber").setValue(contactNumber);
             myRef.child(""+accountNumber).child("photoaddressproofid").setValue(photoAddressIdProof);
             myRef = database.getReference("bank");
