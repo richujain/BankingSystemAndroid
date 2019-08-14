@@ -5,12 +5,71 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Home"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        android:id="@+id/addUserHeading"
+        android:textSize="30sp"
+        android:text="Add User"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textStyle="bold"/>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutName"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addUserHeading"
+        android:layout_marginTop="50dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Customer Name"
+            android:id="@+id/customerName"
+            android:textColor="#000000"
+            android:inputType="number"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutAddress"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Customer Address"
+            android:id="@+id/customerAddress"
+            android:textColor="#000000"
+            android:inputType="number"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutBirthDate"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutAddress">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Customer Birth Date"
+            android:id="@+id/customerDateOfBirth"
+            android:editable="false"
+            android:textColor="#000000"
+            android:inputType="number"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 </RelativeLayout>
