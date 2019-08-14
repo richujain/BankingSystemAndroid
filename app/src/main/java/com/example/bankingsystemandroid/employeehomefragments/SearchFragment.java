@@ -1,5 +1,6 @@
 package com.example.bankingsystemandroid.employeehomefragments;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,6 +33,7 @@ public class SearchFragment extends Fragment {
 
     private EditText accountNumber;
     private Button search;
+    String accountNumberToSearch;
     TextView customerName,customerAddress,customerBirthDate,customerEmailId,customerContactNumber,customerPhotoAddressIdProof;
     ScrollView scrollView;
     TextView customerAccountNumber,customerAccountBalance,customerBankBranch;
@@ -74,36 +76,36 @@ public class SearchFragment extends Fragment {
             showAlert("Enter A Valid Account Number",this.getContext());
         }
         else{
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("customers");
+            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+            accountNumberToSearch = accountNumber.getText().toString().trim();
+
+            DatabaseReference myRef = database.getReference("customers").child(accountNumberToSearch);
             // Read from the database
             myRef.addValueEventListener(new ValueEventListener() {
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
-                    String accountNumberToSearch = accountNumber.getText().toString().trim();
-                    String name = "";
-                    name = (String) dataSnapshot.child(accountNumberToSearch).child("name").getValue();
-                    if(name.length() == 0){
-                        showAlert("No customer record found associated with the account number "+ accountNumberToSearch,getContext());
-                    }
-                    else{
-                        customerName.setText(name);
-                        String dummyVariable = (String) dataSnapshot.child(accountNumberToSearch).child("address").getValue();
-                        customerAddress.setText(dummyVariable);
-                        dummyVariable = (String) dataSnapshot.child(accountNumberToSearch).child("birthdate").getValue();
-                        customerBirthDate.setText(dummyVariable);
-                        dummyVariable = (String) dataSnapshot.child(accountNumberToSearch).child("contactnumber").getValue();
-                        customerContactNumber.setText(dummyVariable);
-                        dummyVariable = (String) dataSnapshot.child(accountNumberToSearch).child("emailid").getValue();
-                        customerEmailId.setText(dummyVariable);
-                        dummyVariable = (String) dataSnapshot.child(accountNumberToSearch).child("photoaddressproofid").getValue();
-                        customerPhotoAddressIdProof.setText(dummyVariable);
+                    if (dataSnapshot.exists()){
+                        String name = (String) dataSnapshot.child("name").getValue();
+                        customerName.setText("Name : "+name);
+                        String dummyVariable = (String) dataSnapshot.child("address").getValue();
+                        customerAddress.setText("Address : "+dummyVariable);
+                        dummyVariable = (String) dataSnapshot.child("birthdate").getValue();
+                        customerBirthDate.setText("Birth Date : "+dummyVariable);
+                        dummyVariable = (String) dataSnapshot.child("contactnumber").getValue();
+                        customerContactNumber.setText("Contact Number : "+dummyVariable);
+                        dummyVariable = (String) dataSnapshot.child("emailid").getValue();
+                        customerEmailId.setText("Email ID : "+dummyVariable);
+                        dummyVariable = (String) dataSnapshot.child("photoaddressproofid").getValue();
+                        customerPhotoAddressIdProof.setText("ID Number : "+dummyVariable);
                         scrollView.setVisibility(View.VISIBLE);
                     }
-
-                    //Log.d(TAG, "Value is: " + value);
+                    else{
+                        scrollView.setVisibility(View.INVISIBLE);
+                        showAlert("No customer record found associated with the account number "+ accountNumberToSearch,getContext());
+                    }
                 }
 
                 @Override
@@ -115,21 +117,21 @@ public class SearchFragment extends Fragment {
         }
     }
     private void showAlert(String message, Context context){
-        AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
                 context);
 
-        alertDialog2.setTitle("ERROR");
+        alertDialog.setTitle("ERROR");
 
-        alertDialog2.setMessage(message);
+        alertDialog.setMessage(message);
 
 
-        alertDialog2.setPositiveButton("OK",
+        alertDialog.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog
                         dialog.cancel();
                     }
                 });
-        alertDialog2.show();
+        alertDialog.show();
     }
 }
