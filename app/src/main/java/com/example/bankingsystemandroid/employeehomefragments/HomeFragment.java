@@ -88,6 +88,9 @@ public class HomeFragment extends Fragment {
 
     private void addUser(){
         Boolean flag = validateDetails();
+        if(flag){
+            
+        }
     }
     private Boolean validateDetails(){
         String thisFieldCannotBeEmpty = "This Field Cannot Be Empty";
@@ -116,9 +119,6 @@ public class HomeFragment extends Fragment {
         else if(customerPhotoAddressProofId.getText().toString().trim().length() == 0){
             customerPhotoAddressProofId.setError(thisFieldCannotBeEmpty);
             flag = false;
-        }
-        else{
-
         }
         return flag;
     }
