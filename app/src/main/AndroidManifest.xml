@@ -19,7 +19,9 @@
         <activity
             android:name=".RateUs"
             android:parentActivityName=".EmployeeHome" />
-        <activity android:name=".EmployeeHome" />
+        <activity android:name=".EmployeeHome"
+            android:theme="@style/WhiteHint"
+            />
         <activity
             android:name=".UserLogin"
             android:theme="@style/NoActionBar" />

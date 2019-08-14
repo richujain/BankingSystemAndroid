@@ -2,31 +2,22 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#8676b5"
+    android:layout_marginBottom="50dp"
     android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addUserHeading"
-        android:textSize="30sp"
-        android:text="Add User"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:textStyle="bold"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutName"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addUserHeading"
         android:layout_marginTop="50dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:hint="Customer Name"
-            android:id="@+id/customerName"
-            android:textColor="#000000"
+            android:id="@+id/name"
+            android:textColor="@color/white"
             android:inputType="number"
             style="@style/GreenText"
             android:gravity="center"
@@ -44,8 +35,8 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:hint="Customer Address"
-            android:id="@+id/customerAddress"
-            android:textColor="#000000"
+            android:id="@+id/address"
+            android:textColor="@color/white"
             android:inputType="number"
             style="@style/GreenText"
             android:gravity="center"
@@ -63,13 +54,80 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:hint="Customer Birth Date"
-            android:id="@+id/customerDateOfBirth"
+            android:id="@+id/birthDate"
             android:editable="false"
-            android:textColor="#000000"
+            android:textColor="@color/white"
             android:inputType="number"
             style="@style/GreenText"
             android:gravity="center"
             android:layout_marginTop="20dp"
             />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutContactNumber"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutBirthDate">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Contact Number"
+            android:id="@+id/contactNumber"
+            android:textColor="@color/white"
+            android:inputType="number"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutEmailId"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutContactNumber">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Emial ID"
+            android:id="@+id/emailId"
+            android:textColor="@color/white"
+            android:inputType="number"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutphotoAddressIdProof"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutEmailId">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Photo Address ID Proof"
+            android:id="@+id/photoAddressIdProof"
+            android:textColor="@color/white"
+            android:inputType="number"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayoutphotoAddressIdProof"
+        android:layout_marginTop="20dp"
+        android:background="#cf5151"
+        android:text="Submit User Details"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        />
 </RelativeLayout>
