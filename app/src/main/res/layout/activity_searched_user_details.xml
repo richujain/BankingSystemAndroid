@@ -16,8 +16,8 @@
 
 
         <com.pkmmte.view.CircularImageView
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@drawable/home"
             android:layout_below="@+id/headingTextView"
             android:layout_marginTop="30dp"

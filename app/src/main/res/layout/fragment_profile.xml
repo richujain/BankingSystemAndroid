@@ -7,6 +7,7 @@
     <RelativeLayout
         android:scrollbars="vertical|horizontal"
         android:layout_width="match_parent"
+        android:layout_marginBottom="50dp"
         android:layout_height="match_parent">
 
     <TextView
@@ -33,6 +34,20 @@
         app:border_width="4dp"
         app:shadow="true" />
 
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/roundedbutton"
+            android:text="Logout"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:id="@+id/logoutUser"
+            android:layout_marginBottom="30dp"
+            />
 
 
     </RelativeLayout>

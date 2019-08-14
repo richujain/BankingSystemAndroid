@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.bankingsystemandroid.EmployeeHome;
 import com.example.bankingsystemandroid.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -153,6 +155,8 @@ public class HomeFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog
                         dialog.cancel();
+                        startActivity(new Intent(getContext(), EmployeeHome.class));
+                        getActivity().finish();
                     }
                 });
         alertDialog2.show();
