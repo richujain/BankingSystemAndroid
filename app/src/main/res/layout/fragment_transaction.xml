@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#7057b5"
+    android:layout_marginBottom="50dp"
     tools:context=".BaseActivity">
 
     <LinearLayout
@@ -19,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deposit"
+            android:id="@+id/depositTitle"
             android:background="@drawable/roundedbuttondeposit"
             android:layout_weight="1"/>
         <Button
@@ -26,11 +28,13 @@
             android:layout_height="wrap_content"
             android:background="@drawable/roundedbuttonwithdrawl"
             android:text="Withdrawl"
+            android:id="@+id/withdrawlTitle"
             android:layout_weight="1"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Transfer"
+            android:id="@+id/transferTitle"
             android:background="@drawable/roundedbuttontransfer"
             android:layout_weight="1"/>
     </LinearLayout>
@@ -130,7 +134,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="fill_parent"
                 android:layout_height="50dp"
-                android:hint="Account Number"
+                android:hint="Amount To Withdraw"
                 android:id="@+id/withdrawlAmount"
                 android:textColor="@color/white"
                 android:inputType="text"
@@ -158,6 +162,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonsLayout"
+        android:visibility="invisible"
         android:id="@+id/transferLayout"
         android:layout_marginTop="20dp">
 
