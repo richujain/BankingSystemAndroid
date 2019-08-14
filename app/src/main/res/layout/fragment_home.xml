@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutName"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="fill_parent"
@@ -139,16 +139,17 @@
                 android:id="@+id/accountTypeHeading"
                 android:layout_marginStart="20dp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:layout_marginTop="20dp"
                 android:textSize="20sp"
                 android:layout_below="@+id/textInputLayoutphotoAddressIdProof"/>
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checkedButton="@+id/first"
+                android:checkedButton="@+id/second"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/radioButton"
+                android:id="@+id/radioGroup"
                 android:layout_toRightOf="@+id/accountTypeHeading"
                 android:layout_below="@id/textInputLayoutphotoAddressIdProof"
                 android:orientation="horizontal">
@@ -156,9 +157,11 @@
                     android:id="@+id/first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/white"
                     android:text="Savings"/>
                 <RadioButton
                     android:id="@+id/second"
+                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Current"/>
@@ -170,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutAccountBalance"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/radioButton">
+                android:layout_below="@id/radioGroup">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="fill_parent"
