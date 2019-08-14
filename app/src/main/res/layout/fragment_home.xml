@@ -132,39 +132,28 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Account Type"
-                android:id="@+id/accountTypeHeading"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:layout_below="@+id/textInputLayoutphotoAddressIdProof"/>
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checkedButton="@+id/second"
+                android:checkedButton="@+id/savings"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:id="@+id/radioGroup"
-                android:layout_toRightOf="@+id/accountTypeHeading"
+                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/textInputLayoutphotoAddressIdProof"
                 android:orientation="horizontal">
                 <RadioButton
-                    android:id="@+id/first"
+                    android:id="@+id/savings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:text="Savings"/>
+                    android:text="savings"/>
                 <RadioButton
-                    android:id="@+id/second"
+                    android:id="@+id/current"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current"/>
+                    android:text="current"/>
             </RadioGroup>
 
 
