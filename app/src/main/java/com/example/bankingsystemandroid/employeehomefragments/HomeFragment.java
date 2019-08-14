@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -20,9 +21,10 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    EditText customerBirthDate;
+    EditText customerBirthDate,customerName,customerAddress,customerContactNumber,customerEmailId,customerPhotoAddressProofId;
     Calendar myCalendar;
     DatePickerDialog.OnDateSetListener date;
+    Button addUserButton;
 
     @Nullable
     @Override
@@ -34,7 +36,18 @@ public class HomeFragment extends Fragment {
         //return inflater.inflate(R.layout.fragment_home, null);
         final View layout = inflater.inflate(R.layout.fragment_home, container, false);
         customerBirthDate = layout.findViewById(R.id.birthDate);
-
+        customerName = layout.findViewById(R.id.name);
+        customerAddress = layout.findViewById(R.id.address);
+        customerContactNumber = layout.findViewById(R.id.contactNumber);
+        customerEmailId = layout.findViewById(R.id.emailId);
+        customerPhotoAddressProofId = layout.findViewById(R.id.photoAddressIdProof);
+        addUserButton = layout.findViewById(R.id.addUserButton);
+        addUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addUser();
+            }
+        });
 
         //DatePicker
         myCalendar = Calendar.getInstance();
@@ -71,6 +84,10 @@ public class HomeFragment extends Fragment {
         //Error resolved https://stackoverflow.com/questions/23490880/button-onclick-inside-fragment-is-not-working
         //return inflater.inflate(R.layout.fragment_search, null);
         return layout;
+    }
+
+    private void addUser(){
+
     }
 
 
