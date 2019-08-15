@@ -1,58 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="65dp"
     android:background="@drawable/background"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_marginBottom="65dp"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:scrollbars="vertical|horizontal"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="50dp"
-        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="133dp"
+        android:text="Bank Statement"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/headingTextView"
-            android:text="Profile"
-            android:gravity="center"
-            android:textSize="50sp"
-            android:layout_marginTop="50dp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-        <com.pkmmte.view.CircularImageView
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:src="@drawable/home"
-            android:layout_below="@+id/headingTextView"
-            android:layout_marginTop="30dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            app:border="true"
-            app:border_color="#EEEEEE"
-            android:id="@+id/profilePicture"
-            app:border_width="4dp"
-            app:shadow="true" />
-
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/roundedbutton"
-            android:text="Logout"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:id="@+id/logoutUser"
-            android:layout_marginBottom="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            />
-
-
-    </RelativeLayout>
 </RelativeLayout>
