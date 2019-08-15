@@ -1,6 +1,10 @@
 package com.example.bankingsystemandroid.employeehomefragments;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +16,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.bankingsystemandroid.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class TransferFragment extends Fragment {
     private Button depositTitle,withdrawlTitle,transferTitle;
@@ -29,6 +38,8 @@ public class TransferFragment extends Fragment {
     Button transferButton;
     //firebase
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    //flag
+    int flag = -1;
 
 
     @Nullable
@@ -93,11 +104,73 @@ public class TransferFragment extends Fragment {
             depositAmout.setError(getString(R.string.thisFieldShouldNotBeEmpty));
         }
         else {
-            //DatabaseReference myRef = database.getReference("bank");
+            DatabaseReference myRef = database.getReference("bank");
+            String accountType = getAccountType(depositAccountNumber.getText().toString().trim());
+            if(accountType.isEmpty()){
+                depositAccountNumber.setError("Account Does Not Exists");
+            }
+            else if(accountType.equals("savings")){
+
+            }
+            else if(accountType.equals("current")){
+
+            }
+            else{
+                depositAccountNumber.setError("Unknown Error");
+                showAlert("Unknown Error Occured.",getContext());
+            }
         }
     }
-    private void getAccountType(String accountNumber){
-        
+    private String getAccountType(String accountNumber){
+
+        DatabaseReference myRef = database.getReference("bank").child("savings").child(accountNumber);
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if(dataSnapshot.exists()){
+                    flag = 0;
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
+        if(flag == -1){
+            myRef = database.getReference("bank").child("current").child(accountNumber);
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    if(dataSnapshot.exists()){
+                        flag = 1;
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError error) {
+                    // Failed to read value
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });
+        }
+
+        if(flag == 0){
+            return "savings";
+        }
+        else if(flag == 1){
+            return "current";
+        }
+        else{
+            return "";
+        }
+
     }
     private void initTitleButton(View view){
         depositTitle = view.findViewById(R.id.depositTitle);
@@ -133,5 +206,23 @@ public class TransferFragment extends Fragment {
                 transferLayout.setVisibility(View.VISIBLE);
             }
         });
+    }
+    private void showAlert(String message, Context context){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                context);
+
+        alertDialog.setTitle("ERROR");
+
+        alertDialog.setMessage(message);
+
+
+        alertDialog.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
     }
 }
