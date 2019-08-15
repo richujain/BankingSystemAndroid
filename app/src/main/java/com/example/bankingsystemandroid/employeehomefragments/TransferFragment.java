@@ -110,10 +110,10 @@ public class TransferFragment extends Fragment {
                 depositAccountNumber.setError("Account Does Not Exists");
             }
             else if(accountType.equals("savings")){
-
+                myRef = database.getReference("bank").child("savings");
             }
             else if(accountType.equals("current")){
-
+                myRef = database.getReference("bank").child("current");
             }
             else{
                 depositAccountNumber.setError("Unknown Error");
