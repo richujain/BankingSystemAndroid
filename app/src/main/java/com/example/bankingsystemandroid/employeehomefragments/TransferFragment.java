@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
@@ -13,8 +14,17 @@ import androidx.fragment.app.Fragment;
 import com.example.bankingsystemandroid.R;
 
 public class TransferFragment extends Fragment {
-    Button depositTitle,withdrawlTitle,transferTitle;
-    RelativeLayout depositLayout,withdrawlLayout,transferLayout;
+    private Button depositTitle,withdrawlTitle,transferTitle;
+    private RelativeLayout depositLayout,withdrawlLayout,transferLayout;
+    //Deposit
+    EditText depositAccountNumber,depositAmout;
+    Button depositButton;
+    //withdrawl
+    EditText withdrawlAccountNumber,withdrawAmount;
+    Button withdrawlButton;
+    //Transaction
+    EditText beneficiaryAccountNumber,remitterAccountNumber,transferAmount;
+    Button transferButton;
 
 
     @Nullable
@@ -27,23 +37,71 @@ public class TransferFragment extends Fragment {
         //return inflater.inflate(R.layout.fragment_transaction, null);
 
         View layout = inflater.inflate(R.layout.fragment_transaction, container, false);
+        initTitleButton(layout);
         init(layout);
+        setOnClick();
 
 
 
 
         return layout;
     }
+
     private void init(View view){
+        depositAccountNumber = view.findViewById(R.id.depositAccountNumber);
+        depositAmout = view.findViewById(R.id.depositAmount);
+        depositButton = view.findViewById(R.id.depositButton);
+        withdrawlAccountNumber = view.findViewById(R.id.withdrawlAccountNumber);
+        withdrawAmount = view.findViewById(R.id.withdrawlAmount);
+        withdrawlButton = view.findViewById(R.id.withdrawlButton);
+        beneficiaryAccountNumber = view.findViewById(R.id.beneficiaryAccountNumber);
+        remitterAccountNumber = view.findViewById(R.id.remitterAccountNumber);
+        transferAmount = view.findViewById(R.id.transferAmount);
+        transferButton = view.findViewById(R.id.transferButton);
+
+    }
+
+    private void setOnClick(){
+        depositButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deposit();
+            }
+        });
+        withdrawlButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //withdraw();
+            }
+        });
+        transferButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //transfer();
+            }
+        });
+    }
+    private void deposit(){
+        if(depositAccountNumber.getText().toString().trim().length() == 0){
+            depositAccountNumber.setError(getString(R.string.thisFieldShouldNotBeEmpty));
+        }
+        else if(depositAmout.getText().toString().trim().length() == 0){
+            depositAmout.setError(getString(R.string.thisFieldShouldNotBeEmpty));
+        }
+        else {
+
+        }
+    }
+    private void initTitleButton(View view){
         depositTitle = view.findViewById(R.id.depositTitle);
         withdrawlTitle = view.findViewById(R.id.withdrawlTitle);
         transferTitle = view.findViewById(R.id.transferTitle);
         depositLayout = view.findViewById(R.id.depositLayout);
         withdrawlLayout = view.findViewById(R.id.withdrawlLayout);
         transferLayout = view.findViewById(R.id.transferLayout);
-        setOnClick();
+        setOnClickTitleButton();
     }
-    private void setOnClick(){
+    private void setOnClickTitleButton(){
         depositTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

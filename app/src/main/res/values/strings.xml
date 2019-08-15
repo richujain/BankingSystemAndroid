@@ -30,6 +30,7 @@
     <string name="action_camera">Camera</string>
     <string name="camera_denied">This app need to access the camera.</string>
     <string name="error">Cannot access ML Kit</string>
+    <string name="thisFieldShouldNotBeEmpty">This Field Should Not Be Empty!</string>
 
     <!-- ml kit -->
 

@@ -1,214 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#7057b5"
+    android:layout_height="match_parent"
     android:layout_marginBottom="50dp"
-    android:layout_height="match_parent">
+    android:background="@color/background_violet">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical"
         android:isScrollContainer="true"
-        android:scrollbarAlwaysDrawVerticalTrack="true">
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="horizontal|vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Customer Name"
-                    android:id="@+id/name"
-                    android:textColor="@color/white"
-                    android:inputType="text"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:gravity="center"
+                    android:hint="Customer Name"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutName">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/address"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Customer Address"
-                    android:id="@+id/address"
-                    android:textColor="@color/white"
-                    android:inputType="text"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:gravity="center"
+                    android:hint="Customer Address"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutBirthDate"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutAddress">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/birthDate"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Customer Birth Date"
-                    android:id="@+id/birthDate"
-                    android:editable="false"
-                    android:textColor="@color/white"
-                    android:inputType="text"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:editable="false"
+                    android:gravity="center"
+                    android:hint="Customer Birth Date"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutContactNumber"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutBirthDate">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/contactNumber"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Contact Number"
-                    android:id="@+id/contactNumber"
-                    android:textColor="@color/white"
-                    android:inputType="number"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:gravity="center"
+                    android:hint="Contact Number"
+                    android:inputType="number"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutEmailId"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutContactNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/emailId"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Emial ID"
-                    android:id="@+id/emailId"
-                    android:textColor="@color/white"
-                    android:inputType="text"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:gravity="center"
+                    android:hint="Emial ID"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutphotoAddressIdProof"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutEmailId">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/photoAddressIdProof"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Photo Address ID Proof"
-                    android:id="@+id/photoAddressIdProof"
-                    android:textColor="@color/white"
-                    android:inputType="text"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:gravity="center"
+                    android:hint="Photo Address ID Proof"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
-             <RadioGroup
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checkedButton="@+id/savings"
+                android:layout_below="@id/textInputLayoutphotoAddressIdProof"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:id="@+id/radioGroup"
-                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/textInputLayoutphotoAddressIdProof"
+                android:checkedButton="@+id/savings"
                 android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/savings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="savings"/>
+                    android:text="savings"
+                    android:textColor="@color/white" />
+
                 <RadioButton
                     android:id="@+id/current"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="current"/>
+                    android:text="current"
+                    android:textColor="@color/white" />
             </RadioGroup>
 
 
-
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutAccountBalance"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/radioGroup">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/accountBalance"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Account Balance"
-                    android:id="@+id/accountBalance"
-                    android:textColor="@color/white"
-                    android:inputType="number"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:gravity="center"
+                    android:hint="Account Balance"
+                    android:inputType="number"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
                 android:id="@+id/textInputLayoutBankBranch"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutAccountBalance">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bankBranch"
+                    style="@style/GreenText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
-                    android:hint="Bank Branch"
-                    android:id="@+id/bankBranch"
-                    android:textColor="@color/white"
-                    android:inputType="text"
-                    style="@style/GreenText"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
-                    />
+                    android:gravity="center"
+                    android:hint="Bank Branch"
+                    android:inputType="text"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <Button
+                android:id="@+id/addUserButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutBankBranch"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
                 android:background="@drawable/roundedbutton"
                 android:text="Submit User Details"
-                android:textStyle="bold"
                 android:textColor="@color/white"
-                android:id="@+id/addUserButton"
-                android:layout_marginBottom="30dp"
-                />
+                android:textStyle="bold" />
         </RelativeLayout>
     </ScrollView>
 
