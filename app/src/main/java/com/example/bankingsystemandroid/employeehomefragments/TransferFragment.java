@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.bankingsystemandroid.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class TransferFragment extends Fragment {
     private Button depositTitle,withdrawlTitle,transferTitle;
@@ -25,6 +27,8 @@ public class TransferFragment extends Fragment {
     //Transaction
     EditText beneficiaryAccountNumber,remitterAccountNumber,transferAmount;
     Button transferButton;
+    //firebase
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
     @Nullable
@@ -89,8 +93,11 @@ public class TransferFragment extends Fragment {
             depositAmout.setError(getString(R.string.thisFieldShouldNotBeEmpty));
         }
         else {
-
+            //DatabaseReference myRef = database.getReference("bank");
         }
+    }
+    private void getAccountType(String accountNumber){
+        
     }
     private void initTitleButton(View view){
         depositTitle = view.findViewById(R.id.depositTitle);

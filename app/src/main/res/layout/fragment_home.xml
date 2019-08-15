@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="50dp"
-    android:background="@color/background_violet">
+    android:layout_marginBottom="65dp"
+    android:background="@drawable/background">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,9 +16,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:text="ADD USER"
+                android:layout_marginTop="20dp"
+                android:id="@+id/addUserHeading"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutName"
                 android:layout_width="match_parent"
+                android:layout_below="@+id/addUserHeading"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
@@ -28,7 +40,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Customer Name"
                     android:inputType="text"
                     android:textColor="@color/white" />
@@ -46,7 +58,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Customer Address"
                     android:inputType="text"
                     android:textColor="@color/white" />
@@ -65,7 +77,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:editable="false"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Customer Birth Date"
                     android:inputType="text"
                     android:textColor="@color/white" />
@@ -83,7 +95,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Contact Number"
                     android:inputType="number"
                     android:textColor="@color/white" />
@@ -101,7 +113,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Emial ID"
                     android:inputType="text"
                     android:textColor="@color/white" />
@@ -119,7 +131,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Photo Address ID Proof"
                     android:inputType="text"
                     android:textColor="@color/white" />
@@ -130,7 +142,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textInputLayoutphotoAddressIdProof"
-                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:checkedButton="@+id/savings"
@@ -141,13 +152,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="savings"
+                    android:textSize="20sp"
                     android:textColor="@color/white" />
 
                 <RadioButton
                     android:id="@+id/current"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:text="current"
+                    android:textSize="20sp"
                     android:textColor="@color/white" />
             </RadioGroup>
 
@@ -164,7 +178,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Account Balance"
                     android:inputType="number"
                     android:textColor="@color/white" />
@@ -182,7 +196,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
-                    android:gravity="center"
+                    android:gravity="start"
                     android:hint="Bank Branch"
                     android:inputType="text"
                     android:textColor="@color/white" />
@@ -199,6 +213,8 @@
                 android:background="@drawable/roundedbutton"
                 android:text="Submit User Details"
                 android:textColor="@color/white"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:textStyle="bold" />
         </RelativeLayout>
     </ScrollView>
