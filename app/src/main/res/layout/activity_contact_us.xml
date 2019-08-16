@@ -2,8 +2,73 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ContactUs">
+    <RelativeLayout
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="CONTACT US.."
+            android:layout_marginTop="20dp"
+            android:id="@+id/contactUsHeading"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
+
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:layout_below="@+id/contactUsHeading"
+            android:text="Call us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnCall"
+            android:background="@drawable/roundedbutton"
+            android:textColor="#ffffff"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:text="Message us"
+            android:id="@+id/btnSms"
+            android:layout_below="@+id/btnCall"
+
+            android:textColor="#ffffff"
+            android:background="@drawable/roundedbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:padding="20dp"
+            android:text="Mail Us"
+            android:layout_below="@+id/btnSms"
+            android:id="@+id/btnEmail"
+            android:textColor="#ffffff"
+            android:background="@drawable/roundedbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
+
+        <TextView
+
+            android:layout_below="@id/btnEmail"
+            android:padding="20dp"
+            android:text="Lambtom College Toronto,275 Yorkland Blvd,North York,Toronto,Ontario,Canada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
