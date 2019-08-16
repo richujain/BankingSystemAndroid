@@ -106,31 +106,31 @@ public class TransferFragment extends Fragment {
             depositAmout.setError(getString(R.string.thisFieldShouldNotBeEmpty));
         }
         else {
-            DatabaseReference myRef = database.getReference("bank");
+            DatabaseReference depositRef = database.getReference("bank");
             String accountType = getAccountType(depositAccountNumber.getText().toString().trim());
-            if(!accountType.isEmpty()){
+            Log.v("accountType","account type is"+accountType);
                 if(accountType.isEmpty()){
                     depositAccountNumber.setError("Account Does Not Exists");
                 }
                 else if(accountType.equals("savings")){
-                    myRef = database.getReference("bank").child("savings");
+                    depositRef = database.getReference("bank").child("savings");
                     Double accountBalance = getAccountBalance(depositAccountNumber.getText().toString().trim(),accountType);
                     Double newBalance = Double.parseDouble(depositAmout.getText().toString()) + accountBalance;
-                    myRef.child(depositAccountNumber.getText().toString().trim()).child("accountbalance").setValue(""+newBalance);
+                    depositRef.child(depositAccountNumber.getText().toString().trim()).child("accountbalance").setValue(""+newBalance);
                     showAlert("Deposited Successfully. New Balance is "+newBalance,getContext());
                 }
                 else if(accountType.equals("current")){
-                    myRef = database.getReference("bank").child("current");
+                    depositRef = database.getReference("bank").child("current");
                     Double accountBalance = getAccountBalance(depositAccountNumber.getText().toString().trim(),accountType);
                     Double newBalance = Double.parseDouble(depositAmout.getText().toString()) + accountBalance;
-                    myRef.child(depositAccountNumber.getText().toString().trim()).child("accountbalance").setValue(""+newBalance);
+                    depositRef.child(depositAccountNumber.getText().toString().trim()).child("accountbalance").setValue(""+newBalance);
                     showAlert("Deposited Successfully. New Balance is "+newBalance,getContext());
                 }
                 else{
                     depositAccountNumber.setError("Unknown Error");
                     showAlert("Unknown Error Occured.",getContext());
                 }
-            }
+
         }
     }
     private Double getAccountBalance(final String accountNumber, String accountType){
@@ -162,6 +162,7 @@ public class TransferFragment extends Fragment {
     }
     private String getAccountType(String accountNumber){
         flag = -1;
+        Log.v("accountNumber",""+accountNumber);
         DatabaseReference myRef = database.getReference("bank").child("savings").child(accountNumber);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -169,6 +170,7 @@ public class TransferFragment extends Fragment {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 if(dataSnapshot.exists()){
+                    Log.v("accountNumber","savings");
                     flag = 0;
                 }
             }
@@ -189,6 +191,7 @@ public class TransferFragment extends Fragment {
                     // whenever data at this location is updated.
                     if(dataSnapshot.exists()){
                         flag = 1;
+                        Log.v("accountNumber","current");
                     }
                 }
 
