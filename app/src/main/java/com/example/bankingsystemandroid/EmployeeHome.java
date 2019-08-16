@@ -102,7 +102,9 @@ public class EmployeeHome extends AppCompatActivity  {
                 startActivity(new Intent(EmployeeHome.this,RateUs.class));
                 break;
             case R.id.contactUs:
-                Toast.makeText(this, "Clicked on Contact Us", Toast.LENGTH_SHORT).show();
+
+               startActivity(new Intent(EmployeeHome.this,ContactUs.class));
+
                 break;
                 default:
                     Toast.makeText(this, "Invalid Input", Toast.LENGTH_SHORT).show();
