@@ -15,13 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchedUserDetails"></activity>
+        <activity android:name=".ContactUs"></activity>
+        <activity android:name=".SearchedUserDetails" />
         <activity
             android:name=".RateUs"
             android:parentActivityName=".EmployeeHome" />
-        <activity android:name=".EmployeeHome"
-            android:theme="@style/WhiteHint"
-            />
+        <activity
+            android:name=".EmployeeHome"
+            android:theme="@style/WhiteHint" />
         <activity
             android:name=".UserLogin"
             android:theme="@style/NoActionBar" />
