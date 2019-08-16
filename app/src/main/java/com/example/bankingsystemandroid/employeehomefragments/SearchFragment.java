@@ -100,6 +100,7 @@ public class SearchFragment extends Fragment {
                         customerEmailId.setText("Email ID : "+dummyVariable);
                         dummyVariable = (String) dataSnapshot.child("photoaddressproofid").getValue();
                         customerPhotoAddressIdProof.setText("ID Number : "+dummyVariable);
+
                         scrollView.setVisibility(View.VISIBLE);
                     }
                     else{

@@ -1,5 +1,6 @@
 package com.example.bankingsystemandroid.employeehomefragments;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -40,6 +41,7 @@ public class TransferFragment extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     //flag
     int flag = -1;
+    String balance;
 
 
     @Nullable
@@ -104,25 +106,63 @@ public class TransferFragment extends Fragment {
             depositAmout.setError(getString(R.string.thisFieldShouldNotBeEmpty));
         }
         else {
-            DatabaseReference myRef = database.getReference("bank");
+            DatabaseReference depositRef = database.getReference("bank");
             String accountType = getAccountType(depositAccountNumber.getText().toString().trim());
-            if(accountType.isEmpty()){
-                depositAccountNumber.setError("Account Does Not Exists");
-            }
-            else if(accountType.equals("savings")){
-                myRef = database.getReference("bank").child("savings");
-            }
-            else if(accountType.equals("current")){
-                myRef = database.getReference("bank").child("current");
-            }
-            else{
-                depositAccountNumber.setError("Unknown Error");
-                showAlert("Unknown Error Occured.",getContext());
-            }
+            Log.v("accountType","account type is"+accountType);
+                if(accountType.isEmpty()){
+                    depositAccountNumber.setError("Account Does Not Exists");
+                }
+                else if(accountType.equals("savings")){
+                    depositRef = database.getReference("bank").child("savings");
+                    Double accountBalance = getAccountBalance(depositAccountNumber.getText().toString().trim(),accountType);
+                    Double newBalance = Double.parseDouble(depositAmout.getText().toString()) + accountBalance;
+                    depositRef.child(depositAccountNumber.getText().toString().trim()).child("accountbalance").setValue(""+newBalance);
+                    showAlert("Deposited Successfully. New Balance is "+newBalance,getContext());
+                }
+                else if(accountType.equals("current")){
+                    depositRef = database.getReference("bank").child("current");
+                    Double accountBalance = getAccountBalance(depositAccountNumber.getText().toString().trim(),accountType);
+                    Double newBalance = Double.parseDouble(depositAmout.getText().toString()) + accountBalance;
+                    depositRef.child(depositAccountNumber.getText().toString().trim()).child("accountbalance").setValue(""+newBalance);
+                    showAlert("Deposited Successfully. New Balance is "+newBalance,getContext());
+                }
+                else{
+                    depositAccountNumber.setError("Unknown Error");
+                    showAlert("Unknown Error Occured.",getContext());
+                }
+
         }
     }
-    private String getAccountType(String accountNumber){
+    private Double getAccountBalance(final String accountNumber, String accountType){
+        DatabaseReference balanceRef = database.getReference("bank");
+        balanceRef = database.getReference("bank").child(accountType).child(accountNumber);
+        balance = "";
+        balanceRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if (dataSnapshot.exists()){
+                    balance = (String) dataSnapshot.child("accountbalance").getValue();
 
+                }
+                else{
+                    showAlert("No customer record found associated with the account number "+ accountNumber,getContext());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        return Double.parseDouble(balance);
+    }
+    private String getAccountType(String accountNumber){
+        flag = -1;
+        Log.v("accountNumber",""+accountNumber);
         DatabaseReference myRef = database.getReference("bank").child("savings").child(accountNumber);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -130,6 +170,7 @@ public class TransferFragment extends Fragment {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 if(dataSnapshot.exists()){
+                    Log.v("accountNumber","savings");
                     flag = 0;
                 }
             }
@@ -150,6 +191,7 @@ public class TransferFragment extends Fragment {
                     // whenever data at this location is updated.
                     if(dataSnapshot.exists()){
                         flag = 1;
+                        Log.v("accountNumber","current");
                     }
                 }
 
