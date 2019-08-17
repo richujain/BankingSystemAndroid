@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".EmailActivity" android:parentActivityName=".EmployeeHome"></activity>
-        <activity android:name=".ContactUs" />
+        <activity android:name=".ContactUs"
+            android:parentActivityName=".EmployeeHome"/>
         <activity android:name=".SearchedUserDetails" />
         <activity
             android:name=".RateUs"
