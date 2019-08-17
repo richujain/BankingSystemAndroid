@@ -21,7 +21,10 @@ public class ContactUs extends AppCompatActivity {
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ContactUs.this, "Calling 1234567890", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:1234567890"));
+                startActivity(intent);
+
             }
         });
         btnMessage.setOnClickListener(new View.OnClickListener() {
