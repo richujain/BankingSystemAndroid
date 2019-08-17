@@ -185,78 +185,7 @@ public class TransferFragment extends Fragment {
         depositRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
         showAlert("SUCCESS","Deposited Successfully. New Balance is "+newBalance,getContext());
     }
-    /*
-    private Double getAccountBalance(final String accountNumber, String accountType){
-        DatabaseReference balanceRef = database.getReference("bank");
-        balanceRef = database.getReference("bank").child(accountType).child(accountNumber);
-        balance = "";
-        balanceRef.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                if (dataSnapshot.exists()){
-                    balance = (String) dataSnapshot.child("accountbalance").getValue();
 
-                }
-                else{
-                    showAlert("No customer record found associated with the account number "+ accountNumber,getContext());
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
-        return Double.parseDouble(balance);
-    }
-    private void getAccountType(String accountNumber){
-        flag = -1;
-        Log.v("accountNumber",""+accountNumber);
-        DatabaseReference myRef = database.getReference("bank").child("savings").child(accountNumber);
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                if(dataSnapshot.exists()){
-                    Log.v("accountNumber","savings");
-                    flag = 0;
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
-
-        if(flag == -1){
-            myRef = database.getReference("bank").child("current").child(accountNumber);
-            myRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    if(dataSnapshot.exists()){
-                        flag = 1;
-                        Log.v("accountNumber","current");
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Log.w(TAG, "Failed to read value.", error.toException());
-                }
-            });
-        }
-
-    }*/
     private void initTitleButton(View view){
         depositTitle = view.findViewById(R.id.depositTitle);
         withdrawlTitle = view.findViewById(R.id.withdrawlTitle);
