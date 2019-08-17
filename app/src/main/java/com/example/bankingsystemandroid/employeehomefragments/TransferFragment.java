@@ -29,21 +29,19 @@ public class TransferFragment extends Fragment {
     private Button depositTitle,withdrawlTitle,transferTitle;
     private RelativeLayout depositLayout,withdrawlLayout,transferLayout;
     //Deposit
-    EditText depositAccountNumber,depositAmout;
-    Button depositButton;
+    private EditText depositAccountNumber,depositAmout;
+    private Button depositButton;
     //withdrawl
-    EditText withdrawlAccountNumber,withdrawAmount;
-    Button withdrawlButton;
+    private EditText withdrawlAccountNumber,withdrawAmount;
+    private Button withdrawlButton;
     //Transaction
-    EditText beneficiaryAccountNumber,remitterAccountNumber,transferAmount;
-    Button transferButton;
+    private EditText beneficiaryAccountNumber,remitterAccountNumber,transferAmount;
+    private Button transferButton;
     //firebase
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference depositRef = database.getReference("bank");
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference depositRef = database.getReference("bank");
     //flag
-    int flag = -1;
-    String balance;
-    String accountType = "";
+    private String balance;
 
 
     @Nullable
@@ -90,7 +88,7 @@ public class TransferFragment extends Fragment {
         withdrawlButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //withdraw();
+                withdraw();
             }
         });
         transferButton.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +98,95 @@ public class TransferFragment extends Fragment {
             }
         });
     }
+    //start of withdrawl functions
+    private void withdraw(){
+        if(withdrawlAccountNumber.getText().toString().trim().length() == 0){
+            withdrawlAccountNumber.setError(getString(R.string.thisFieldShouldNotBeEmpty));
+        }
+        else if(withdrawAmount.getText().toString().trim().length() == 0){
+            withdrawAmount.setError(getString(R.string.thisFieldShouldNotBeEmpty));
+        }
+        else {
+            withdrawGetAccountType();
+        }
+    }
+
+    private void withdrawGetAccountType(){
+        final String accountNumber = withdrawlAccountNumber.getText().toString().trim();
+        DatabaseReference myRef = database.getReference("bank").child("savings").child(accountNumber);
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if(dataSnapshot.exists()){
+                    withdrawGetBalance(accountNumber,"savings");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        myRef = database.getReference("bank").child("current").child(accountNumber);
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if(dataSnapshot.exists()){
+                    withdrawGetBalance(accountNumber,"current");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    }
+    private void withdrawGetBalance(final String accountNumber, final String accountType){
+        DatabaseReference balanceRef;
+        balanceRef = database.getReference("bank").child(accountType).child(accountNumber);
+        balance = "";
+        balanceRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if (dataSnapshot.exists()){
+                    balance = (String) dataSnapshot.child("accountbalance").getValue();
+                    Double newBalance = Double.parseDouble(balance) + Double.parseDouble(depositAmout.getText().toString().trim());
+                    saveWithdraw(accountType,accountNumber,newBalance);
+
+                }
+                else{
+                    showAlert("ERROR","No customer record found associated with the account number ",getContext());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    }
+    private void saveWithdraw(String accountType,String accountNumber,Double newBalance){
+        depositRef = database.getReference("bank").child(accountType);
+        depositRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
+        showAlert("SUCCESS","Withdrawn Successful. New Balance is "+newBalance,getContext());
+    }
+
+    //end of withdrawl functions
+
+
+    //start of Deposit Functions
+
     private void deposit(){
         if(depositAccountNumber.getText().toString().trim().length() == 0){
             depositAccountNumber.setError(getString(R.string.thisFieldShouldNotBeEmpty));
@@ -108,10 +195,7 @@ public class TransferFragment extends Fragment {
             depositAmout.setError(getString(R.string.thisFieldShouldNotBeEmpty));
         }
         else {
-
             depositGetAccountType();
-
-
         }
     }
 
@@ -185,6 +269,8 @@ public class TransferFragment extends Fragment {
         depositRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
         showAlert("SUCCESS","Deposited Successfully. New Balance is "+newBalance,getContext());
     }
+
+    //End of Deposit functions
 
     private void initTitleButton(View view){
         depositTitle = view.findViewById(R.id.depositTitle);
