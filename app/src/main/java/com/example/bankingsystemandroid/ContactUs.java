@@ -7,10 +7,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ContactUs extends AppCompatActivity {
     Button btnCall,btnMessage,btnEmail;
+    TextView tvAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,22 @@ public class ContactUs extends AppCompatActivity {
         btnCall=findViewById(R.id.btnCall);
         btnEmail=findViewById(R.id.btnEmail);
         btnMessage=findViewById(R.id.btnSms);
+        tvAddress=findViewById(R.id.tvAddress);
+        tvAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:43.887501,79.428406?z=16"));
+                if (intent.resolveActivity(ContactUs.this.getPackageManager()) != null) {
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(ContactUs.this, "No Intent Available", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         btnCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,5 +58,6 @@ public class ContactUs extends AppCompatActivity {
                 startActivity(new Intent(ContactUs.this,EmailActivity.class));
             }
         });
+
     }
 }
