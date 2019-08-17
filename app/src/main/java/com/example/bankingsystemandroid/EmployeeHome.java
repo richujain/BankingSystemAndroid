@@ -104,6 +104,10 @@ public class EmployeeHome extends AppCompatActivity  {
             case R.id.contactUs:
 
                startActivity(new Intent(EmployeeHome.this,ContactUs.class));
+               break;
+            case R.id.AboutUs:
+                startActivity(new Intent(EmployeeHome.this,AboutUs.class));
+
 
                 break;
                 default:

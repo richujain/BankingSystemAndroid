@@ -11,6 +11,11 @@
         android:id="@+id/contactUs"
         app:showAsAction="never"
         android:title="Contact Us"/>
+    <item
+        android:id="@+id/AboutUs"
+        app:showAsAction="never"
+        android:title="About Us"/>
+
 
 
 </menu>
