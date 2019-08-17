@@ -25,13 +25,14 @@ public class EmailActivity extends AppCompatActivity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String to = txtEmailId.getText().toString();
+                String from = txtEmailId.getText().toString();
                 String subject = txtSubject.getText().toString();
                 String body = txtBody.getText().toString();
 
                 Intent emailIntent = new Intent(Intent.ACTION_SEND); //Intent.ACTION_SENDTO
                 emailIntent.setType("text/plain");
-                emailIntent.setData(Uri.parse("mailto:" + to));
+                emailIntent.setData(Uri.parse("mailfrom:" + from));
+
                 //emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{ to});
                 emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 emailIntent.putExtra(Intent.EXTRA_TEXT, body);
