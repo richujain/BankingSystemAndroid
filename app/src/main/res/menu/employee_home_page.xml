@@ -12,7 +12,7 @@
         app:showAsAction="never"
         android:title="Contact Us"/>
     <item
-        android:id="@+id/AboutUs"
+        android:id="@+id/aboutUs"
         app:showAsAction="never"
         android:title="About Us"/>
 

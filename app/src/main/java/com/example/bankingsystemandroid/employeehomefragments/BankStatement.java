@@ -18,6 +18,9 @@ public class BankStatement extends Fragment {
         //with the fragment you want to inflate
         //like if the class is HomeFragment it should have R.layout.home_fragment
         //if it is DashboardFragment it should have R.layout.fragment_dashboard
-        return inflater.inflate(R.layout.fragment_bankstatement, null);
+        //return inflater.inflate(R.layout.fragment_bankstatement, null);
+        final View layout = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        return layout;
     }
 }

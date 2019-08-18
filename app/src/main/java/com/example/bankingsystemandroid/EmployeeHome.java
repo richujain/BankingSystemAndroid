@@ -105,7 +105,7 @@ public class EmployeeHome extends AppCompatActivity  {
 
                startActivity(new Intent(EmployeeHome.this,ContactUs.class));
                break;
-            case R.id.AboutUs:
+            case R.id.aboutUs:
                 startActivity(new Intent(EmployeeHome.this,AboutUs.class));
 
 

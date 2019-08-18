@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.bankingsystemandroid.EmployeeHome;
 import com.example.bankingsystemandroid.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +42,7 @@ public class TransferFragment extends Fragment {
     //firebase
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference depositRef = database.getReference("bank");
+    private DatabaseReference withdrawRef = database.getReference("bank");
     //flag
     private String balance;
 
@@ -148,7 +151,7 @@ public class TransferFragment extends Fragment {
             }
         });
     }
-    private void withdrawGetBalance(final String accountNumber, final String accountType){
+     private void withdrawGetBalance(final String accountNumber, final String accountType){
         DatabaseReference balanceRef;
         balanceRef = database.getReference("bank").child(accountType).child(accountNumber);
         balance = "";
@@ -160,7 +163,7 @@ public class TransferFragment extends Fragment {
                 // whenever data at this location is updated.
                 if (dataSnapshot.exists()){
                     balance = (String) dataSnapshot.child("accountbalance").getValue();
-                    Double newBalance = Double.parseDouble(balance) + Double.parseDouble(depositAmout.getText().toString().trim());
+                    Double newBalance = Double.parseDouble(balance) - Double.parseDouble(withdrawAmount.getText().toString().trim());
                     saveWithdraw(accountType,accountNumber,newBalance);
 
                 }
@@ -177,9 +180,9 @@ public class TransferFragment extends Fragment {
         });
     }
     private void saveWithdraw(String accountType,String accountNumber,Double newBalance){
-        depositRef = database.getReference("bank").child(accountType);
-        depositRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
-        showAlert("SUCCESS","Withdrawn Successful. New Balance is "+newBalance,getContext());
+        withdrawRef = database.getReference("bank").child(accountType);
+        withdrawRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
+        showAlertWhenSuccess("SUCCESS","Withdrawn Successful. New Balance is "+newBalance,getContext());
     }
 
     //end of withdrawl functions
@@ -253,7 +256,7 @@ public class TransferFragment extends Fragment {
 
                 }
                 else{
-                    showAlert("ERROR","No customer record found associated with the account number ",getContext());
+                    showAlertWhenSuccess("ERROR","No customer record found associated with the account number ",getContext());
                 }
             }
 
@@ -321,6 +324,25 @@ public class TransferFragment extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         // Write your code here to execute after dialog
                         dialog.cancel();
+                    }
+                });
+        alertDialog.show();
+    }
+    private void showAlertWhenSuccess(String title,String message, Context context){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                context);
+
+        alertDialog.setTitle(title);
+
+        alertDialog.setMessage(message);
+
+
+        alertDialog.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Write your code here to execute after dialog
+                        dialog.cancel();
+                        startActivity(new Intent(getContext(),EmployeeHome.class));
                     }
                 });
         alertDialog.show();
