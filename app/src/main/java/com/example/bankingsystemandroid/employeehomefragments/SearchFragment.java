@@ -36,7 +36,7 @@ public class SearchFragment extends Fragment {
     String accountNumberToSearch;
     TextView customerName,customerAddress,customerBirthDate,customerEmailId,customerContactNumber,customerPhotoAddressIdProof;
     ScrollView scrollView;
-    TextView customerAccountNumber,customerAccountBalance,customerBankBranch;
+    TextView customerAccountBalance,customerBankBranch;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +48,6 @@ public class SearchFragment extends Fragment {
         customerEmailId = layout.findViewById(R.id.customerEmailId);
         customerName = layout.findViewById(R.id.customerName);
         customerAccountBalance = layout.findViewById(R.id.customerAccountBalance);
-        customerAccountNumber = layout.findViewById(R.id.customerAccountNumber);
         customerBankBranch = layout.findViewById(R.id.customerBankBranch);
         scrollView = layout.findViewById(R.id.scrollViewSearch);
         scrollView.setVisibility(View.INVISIBLE);

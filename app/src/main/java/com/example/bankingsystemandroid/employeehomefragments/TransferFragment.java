@@ -101,6 +101,11 @@ public class TransferFragment extends Fragment {
             }
         });
     }
+    //start of transfer functions
+
+
+    //end of transfer functions
+
     //start of withdrawl functions
     private void withdraw(){
         if(withdrawlAccountNumber.getText().toString().trim().length() == 0){
