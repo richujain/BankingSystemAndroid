@@ -144,7 +144,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Proof Number : "
+            android:text="Customer Contact Number : "
             android:layout_below="@id/customerContactNumber"
             android:layout_marginTop="20dp"
             android:textSize="25sp"
@@ -152,22 +152,12 @@
             android:id="@+id/customerPhotoAddressIdProof"
             android:gravity="center"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID Proof Number : "
-            android:layout_below="@id/customerPhotoAddressIdProof"
-            android:layout_marginTop="20dp"
-            android:textSize="25sp"
-            android:textColor="@color/white"
-            android:id="@+id/customerAccountNumber"
-            android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Account Balance : "
-            android:layout_below="@id/customerAccountNumber"
+            android:layout_below="@id/customerPhotoAddressIdProof"
             android:layout_marginTop="20dp"
             android:textSize="25sp"
             android:id="@+id/customerAccountBalance"

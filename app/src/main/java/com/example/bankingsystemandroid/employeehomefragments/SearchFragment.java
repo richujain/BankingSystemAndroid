@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class SearchFragment extends Fragment {
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     private EditText accountNumber;
     private Button search;
     String accountNumberToSearch;
@@ -76,7 +76,6 @@ public class SearchFragment extends Fragment {
             showAlert("Enter A Valid Account Number",this.getContext());
         }
         else{
-            final FirebaseDatabase database = FirebaseDatabase.getInstance();
             accountNumberToSearch = accountNumber.getText().toString().trim();
 
             DatabaseReference myRef = database.getReference("customers").child(accountNumberToSearch);
@@ -100,7 +99,7 @@ public class SearchFragment extends Fragment {
                         customerEmailId.setText("Email ID : "+dummyVariable);
                         dummyVariable = (String) dataSnapshot.child("photoaddressproofid").getValue();
                         customerPhotoAddressIdProof.setText("ID Number : "+dummyVariable);
-
+                        getAccountType(accountNumberToSearch);
                         scrollView.setVisibility(View.VISIBLE);
                     }
                     else{
@@ -117,6 +116,73 @@ public class SearchFragment extends Fragment {
             });
         }
     }
+    private void getAccountType(final String accountNumberToSearch){
+        DatabaseReference myRef = database.getReference("bank").child("savings").child(accountNumberToSearch);
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if(dataSnapshot.exists()){
+                    displayBankDetails(accountNumberToSearch,"savings");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        myRef = database.getReference("bank").child("current").child(accountNumberToSearch);
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if(dataSnapshot.exists()){
+                    displayBankDetails(accountNumberToSearch,"current");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    }
+    private void displayBankDetails(final String accountNumberToSearch, String accountType){
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("bank").child(accountType).child(accountNumberToSearch);
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                if (dataSnapshot.exists()){
+                    String dummyVariable = (String) dataSnapshot.child("accountbalance").getValue();
+                    customerAccountBalance.setText("Balance : "+dummyVariable);
+                    dummyVariable = (String) dataSnapshot.child("bankbranch").getValue();
+                    customerBankBranch.setText("Branch : "+dummyVariable);
+                    scrollView.setVisibility(View.VISIBLE);
+                }
+                else{
+                    scrollView.setVisibility(View.INVISIBLE);
+                    showAlert("No customer record found associated with the account number "+ accountNumberToSearch,getContext());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    }
+
     private void showAlert(String message, Context context){
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(
                 context);
