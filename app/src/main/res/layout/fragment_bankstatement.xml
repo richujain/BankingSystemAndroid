@@ -9,6 +9,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:id="@+id/textInputLayoutUsername"
+        android:layout_toLeftOf="@id/searchButton"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp">
 
@@ -17,7 +18,7 @@
             android:layout_height="50dp"
             android:hint="Account Number"
             android:id="@+id/accountNumberToSearch"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:inputType="number"
             style="@style/GreenText"
             android:gravity="center"
