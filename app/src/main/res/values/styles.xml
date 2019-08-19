@@ -18,6 +18,9 @@
     <style name="GreenText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">#00FF00</item>
     </style>
+    <style name="BlackText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

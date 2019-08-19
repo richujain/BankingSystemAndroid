@@ -40,8 +40,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        ImageView profilePicture = myFragmentView.findViewById(R.id.profilePicture);
-        profilePicture.setBackgroundResource(R.drawable.app_icon);
+        //ImageView profilePicture = myFragmentView.findViewById(R.id.profilePicture);
+       // profilePicture.setBackgroundResource(R.drawable.app_logo);
 
         /*Glide.with(getContext()).load(R.drawable.home)
                 .into((ImageView) myFragmentView.findViewById(R.id.profilePicture));*/

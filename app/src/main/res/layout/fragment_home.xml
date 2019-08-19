@@ -36,14 +36,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/name"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:hint="Customer Name"
-                    android:inputType="text"
-                    android:textColor="@color/white" />
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -54,14 +53,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/address"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:hint="Customer Address"
-                    android:inputType="text"
-                    android:textColor="@color/white" />
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -72,15 +70,14 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/birthDate"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:editable="false"
                     android:gravity="start"
                     android:hint="Customer Birth Date"
-                    android:inputType="text"
-                    android:textColor="@color/white" />
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -91,14 +88,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/contactNumber"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:hint="Contact Number"
-                    android:inputType="number"
-                    android:textColor="@color/white" />
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -109,14 +105,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailId"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:hint="Emial ID"
-                    android:inputType="text"
-                    android:textColor="@color/white" />
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -127,14 +122,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/photoAddressIdProof"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:hint="Photo Address ID Proof"
-                    android:inputType="text"
-                    android:textColor="@color/white" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
@@ -145,6 +139,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:checkedButton="@+id/savings"
+                style="@style/BlackText"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -152,8 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="savings"
-                    android:textSize="20sp"
-                    android:textColor="@color/white" />
+                    android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/current"
@@ -161,8 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="current"
-                    android:textSize="20sp"
-                    android:textColor="@color/white" />
+                    android:textSize="18sp" />
             </RadioGroup>
 
 
@@ -174,14 +167,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/accountBalance"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:hint="Account Balance"
-                    android:inputType="number"
-                    android:textColor="@color/white" />
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -192,14 +184,13 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/bankBranch"
-                    style="@style/GreenText"
+                    style="@style/BlackText"
                     android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start"
                     android:hint="Bank Branch"
-                    android:inputType="text"
-                    android:textColor="@color/white" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
 

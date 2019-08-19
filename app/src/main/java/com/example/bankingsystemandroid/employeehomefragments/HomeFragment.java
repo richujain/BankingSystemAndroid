@@ -60,8 +60,6 @@ public class HomeFragment extends Fragment {
         radioGroup = layout.findViewById(R.id.radioGroup);
         customerAccountBalance = layout.findViewById(R.id.accountBalance);
         customerBankBranch = layout.findViewById(R.id.bankBranch);
-        //first 2131296358
-        //second 2131296446
         int selectedId = radioGroup.getCheckedRadioButtonId();
         // find the radiobutton by returned id
         radioButton = layout.findViewById(selectedId);
