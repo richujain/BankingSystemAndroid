@@ -87,11 +87,11 @@ public class BankStatement extends Fragment {
                     String statement = "";
                     if(!remitter.isEmpty() && !beneficiary.isEmpty()){
                         if(remitter.equals(accountNumberToSearch) && beneficiary.equals("cash")){
-                            statement = "$"+amount+" Deposited on "+date;
+                            statement = "$"+amount+" Withdrawn on "+date;
                             flag = true;
                         }
                         else if(remitter.equals("cash") && beneficiary.equals(accountNumberToSearch)) {
-                            statement = "$"+amount+" Withdrawn on "+date;
+                            statement = "$"+amount+" Deposited on "+date;
                             flag = true;
                         }
                         else if(remitter.equals(accountNumberToSearch)){

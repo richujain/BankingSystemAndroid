@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+
         android:textSize="30sp"
         android:textColor="@color/white"
         android:gravity="center"
@@ -75,7 +76,7 @@
             android:textStyle="bold"
             android:textSize="30sp"/>
 
-
+<!--
         <com.pkmmte.view.CircularImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -88,14 +89,15 @@
             android:id="@+id/profilePicture"
             app:border_width="4dp"
             app:shadow="true" />
+            -->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Name : "
-            android:layout_below="@id/profilePicture"
+            android:layout_below="@id/headingUserDetails"
             android:layout_marginTop="30dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="25sp"
             android:id="@+id/customerName"
             android:layout_marginStart="30dp"/>
@@ -107,7 +109,7 @@
             android:layout_below="@id/customerName"
             android:layout_marginTop="15dp"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/customerAddress"
             android:layout_marginStart="30dp"/>
 
@@ -117,6 +119,7 @@
             android:text="Birth Date : "
             android:layout_below="@id/customerAddress"
             android:layout_marginTop="15dp"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:id="@+id/customerBirthDate"
             android:layout_marginStart="30dp"/>
@@ -127,6 +130,7 @@
             android:layout_below="@id/customerBirthDate"
             android:layout_marginTop="15dp"
             android:textSize="20sp"
+            android:textColor="@color/black"
             android:id="@+id/customerEmailId"
             android:layout_marginStart="30dp"/>
         <TextView
@@ -136,6 +140,7 @@
             android:layout_below="@id/customerEmailId"
             android:layout_marginTop="15dp"
             android:textSize="20sp"
+            android:textColor="@color/black"
             android:id="@+id/customerContactNumber"
             android:layout_marginStart="30dp"/>
         <TextView
@@ -145,7 +150,7 @@
             android:layout_below="@id/customerContactNumber"
             android:layout_marginTop="15dp"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/customerPhotoAddressIdProof"
             android:layout_marginStart="30dp"/>
 
@@ -155,6 +160,7 @@
             android:text="Account Balance : "
             android:layout_below="@id/customerPhotoAddressIdProof"
             android:layout_marginTop="15dp"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:id="@+id/customerAccountBalance"
             android:layout_marginStart="30dp"/>
@@ -165,7 +171,7 @@
             android:layout_below="@id/customerAccountBalance"
             android:layout_marginTop="15dp"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:id="@+id/customerBankBranch"
             android:layout_marginStart="30dp"/>
 

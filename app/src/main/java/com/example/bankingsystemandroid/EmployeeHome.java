@@ -36,12 +36,12 @@ public class EmployeeHome extends AppCompatActivity  {
         //defining
         bottomBar.setBarBackgroundColor(Color.parseColor("#FFFFFF"));
         ArrayList<Flaretab> tabs = new ArrayList<>();
-        tabs.add(new Flaretab(getResources().getDrawable(R.drawable.home),"Home","#FFECB3"));
+        tabs.add(new Flaretab(getResources().getDrawable(R.drawable.home),"Add User","#FFECB3"));
         tabs.add(new Flaretab(getResources().getDrawable(R.drawable.searchb),"Search","#80DEEA"));
         tabs.add(new Flaretab(getResources().getDrawable(R.drawable.transaction),"Transfer","#FFECB3"));
         tabs.add(new Flaretab(getResources().getDrawable(R.drawable.bankstatement),"Bank Statement","#B39DDB"));
         tabs.add(new Flaretab(getResources().getDrawable(R.drawable.avatarb),"Profile","#EF9A9A"));
-        tabs.add(new Flaretab(getResources().getDrawable(R.drawable.settingsb),"Settings","#B2DFDB"));
+        //tabs.add(new Flaretab(getResources().getDrawable(R.drawable.settingsb),"Settings","#B2DFDB"));
 
         bottomBar.setTabList(tabs);
         bottomBar.attachTabs(EmployeeHome.this);
