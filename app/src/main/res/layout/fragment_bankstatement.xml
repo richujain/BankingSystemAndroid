@@ -6,4 +6,57 @@
     android:background="@drawable/background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:id="@+id/textInputLayoutUsername"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:hint="Account Number"
+            android:id="@+id/accountNumberToSearch"
+            android:textColor="@color/white"
+            android:inputType="number"
+            style="@style/GreenText"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/searchb"
+        android:layout_marginTop="75dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/searchButton"
+        android:layout_alignParentEnd="true"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="horizontal|vertical"
+        android:layout_below="@id/searchButton"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/scrollViewStatement"
+        android:visibility="invisible"
+        android:isScrollContainer="true"
+        android:layout_marginTop="30dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/searchButton"
+            android:id="@+id/listView">
+
+        </ListView>
+
+    </ScrollView>
+
+
+
 </RelativeLayout>
