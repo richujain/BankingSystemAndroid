@@ -25,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class TransferFragment extends Fragment {
@@ -43,6 +46,7 @@ public class TransferFragment extends Fragment {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference depositRef = database.getReference("bank");
     private DatabaseReference withdrawRef = database.getReference("bank");
+    private DatabaseReference transactionRef = database.getReference("transactions");
     //flag
     private String balance;
 
@@ -191,6 +195,13 @@ public class TransferFragment extends Fragment {
         });
     }
     private void saveWithdraw(String accountType,String accountNumber,Double newBalance){
+        String pushId = transactionRef.push().getKey();
+        transactionRef.child(pushId).child("remitter").setValue(accountNumber);
+        transactionRef.child(pushId).child("beneficiary").setValue("cash");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        String currentDateandTime = sdf.format(new Date());
+        transactionRef.child(pushId).child("datetime").setValue(currentDateandTime);
+        transactionRef.child(pushId).child("amount").setValue(withdrawAmount.getText().toString().trim());
         withdrawRef = database.getReference("bank").child(accountType);
         withdrawRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
         showAlertWhenSuccess("SUCCESS","Withdrawn Successful. New Balance is "+newBalance,getContext());
@@ -283,6 +294,13 @@ public class TransferFragment extends Fragment {
         });
     }
     private void saveDeposit(String accountType,String accountNumber,Double newBalance){
+        String pushId = transactionRef.push().getKey();
+        transactionRef.child(pushId).child("remitter").setValue("cash");
+        transactionRef.child(pushId).child("beneficiary").setValue(accountNumber);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        String currentDateandTime = sdf.format(new Date());
+        transactionRef.child(pushId).child("datetime").setValue(currentDateandTime);
+        transactionRef.child(pushId).child("amount").setValue(depositAmount.getText().toString().trim());
         depositRef = database.getReference("bank").child(accountType);
         depositRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
         showAlertWhenSuccess("SUCCESS","Deposited Successfully. New Balance is "+newBalance,getContext());

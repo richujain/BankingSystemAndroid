@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,12 +31,12 @@ public class BankStatement extends Fragment {
     ListView listView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    ArrayList<BankStatementHolder> arrayList;
-    ArrayAdapter<BankStatementHolder> adapter;
-    BankStatementHolder bankStatementHolder;
+    ArrayList<String> arrayList;
+    ArrayAdapter<String> adapter;
+    boolean flag = false;
+    //BankStatementHolder bankStatementHolder;
     EditText accountNumber;
     Button searchButton;
-    ScrollView scrollView;
     String id = "";
     @Nullable
     @Override
@@ -53,8 +54,6 @@ public class BankStatement extends Fragment {
         adapter = new ArrayAdapter<>(getContext(),R.layout.bankstatement_layout,R.id.bankStatementTextView, arrayList);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("transactions");
-        scrollView = layout.findViewById(R.id.scrollViewStatement);
-        //scrollView.setVisibility(View.INVISIBLE);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,38 +70,57 @@ public class BankStatement extends Fragment {
         return layout;
     }
     private void getBankStatement(final String accountNumberToSearch){
+        arrayList = new ArrayList<>();
+        adapter = new ArrayAdapter<>(getContext(),R.layout.bankstatement_layout,R.id.bankStatementTextView, arrayList);
+        flag = false;
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    id = dataSnapshot1.getKey();
-                    String date = (String) dataSnapshot1.child(id).child("datetime").getValue();
-                    String amount = (String) dataSnapshot1.child(id).child("amount").getValue();
-                    String beneficiary = (String) dataSnapshot1.child(id).child("beneficiary").getValue();
-                    String remitter = (String) dataSnapshot1.child(id).child("remitter").getValue();
+                    String date = dataSnapshot1.child("datetime").getValue(String.class);
+                    String amount = dataSnapshot1.child("amount").getValue(String.class);
+                    String beneficiary = dataSnapshot1.child("beneficiary").getValue(String.class);
+                    String remitter = dataSnapshot1.child("remitter").getValue(String.class);
+                    Log.v("accountNumberToSearch","accountNumberToSearch"+accountNumberToSearch);
+                    Log.v("remitter","remitter"+remitter);
+
                     String statement = "";
-                    if(dataSnapshot1.child(id).child("remitter").equals(accountNumberToSearch) && dataSnapshot1.child(id).child("beneficiary").equals("cash")){
-                        statement = "$"+amount+" Deposited on "+date;
+                    if(!remitter.isEmpty() && !beneficiary.isEmpty()){
+                        if(remitter.equals(accountNumberToSearch) && beneficiary.equals("cash")){
+                            statement = "$"+amount+" Deposited on "+date;
+                            flag = true;
+                        }
+                        else if(remitter.equals("cash") && beneficiary.equals(accountNumberToSearch)) {
+                            statement = "$"+amount+" Withdrawn on "+date;
+                            flag = true;
+                        }
+                        else if(remitter.equals(accountNumberToSearch)){
+                            statement = "$"+amount+" transferred to "+beneficiary +" on "+date;
+                            flag = true;
+                        }
+                        else if(beneficiary.equals(accountNumberToSearch)){
+                            statement = "$"+amount+" credited from "+remitter +" on "+date;
+                            flag = true;
+                        }
+
                     }
-                    else if(dataSnapshot1.child(id).child("remitter").equals("cash") && dataSnapshot1.child(id).child("beneficiary").equals(accountNumberToSearch)) {
-                        statement = "$"+amount+" Withdrawn on "+date;
+
+                    Log.v("statement","statement"+statement);
+                    if(!statement.isEmpty()){
+                        flag = true;
+                        arrayList.add(statement);
                     }
-                    else if(dataSnapshot1.child(id).child("remitter").equals(accountNumberToSearch)){
-                        statement = "$"+amount+" transferred to "+beneficiary +" on "+date;
-                    }
-                    else if(dataSnapshot1.child(id).child("beneficiary").equals(accountNumberToSearch)){
-                        statement = "$"+amount+" credited from "+remitter +" on "+date;
-                    }
-                    if(!statement.isEmpty()){{
-                        bankStatementHolder = new BankStatementHolder(statement);
-                        arrayList.add(bankStatementHolder);
-                    }}
                 }
                 if(!arrayList.isEmpty()){
-                    scrollView.setVisibility(View.VISIBLE);
+                    listView.setVisibility(View.VISIBLE);
+                    listView.setAdapter(adapter);
+                    if(!flag){
+                        Toast.makeText(getContext(), "No Transaction Record Found.", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
-                Log.v("arrayList",""+arrayList);
-                listView.setAdapter(adapter);
+
+
             }
 
             @Override
@@ -110,5 +128,7 @@ public class BankStatement extends Fragment {
 
             }
         });
+
+
     }
 }

@@ -36,26 +36,17 @@
         android:layout_alignParentEnd="true"
         />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="horizontal|vertical"
-        android:layout_below="@id/searchButton"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/scrollViewStatement"
-        android:visibility="invisible"
-        android:isScrollContainer="true"
-        android:layout_marginTop="30dp"
-        android:scrollbarAlwaysDrawVerticalTrack="true">
+
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/searchButton"
+            android:layout_marginTop="30dp"
+            android:visibility="invisible"
             android:id="@+id/listView">
 
         </ListView>
 
-    </ScrollView>
 
 
 
