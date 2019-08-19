@@ -31,7 +31,7 @@ public class TransferFragment extends Fragment {
     private Button depositTitle,withdrawlTitle,transferTitle;
     private RelativeLayout depositLayout,withdrawlLayout,transferLayout;
     //Deposit
-    private EditText depositAccountNumber,depositAmout;
+    private EditText depositAccountNumber,depositAmount;
     private Button depositButton;
     //withdrawl
     private EditText withdrawlAccountNumber,withdrawAmount;
@@ -69,7 +69,7 @@ public class TransferFragment extends Fragment {
 
     private void init(View view){
         depositAccountNumber = view.findViewById(R.id.depositAccountNumber);
-        depositAmout = view.findViewById(R.id.depositAmount);
+        depositAmount = view.findViewById(R.id.depositAmount);
         depositButton = view.findViewById(R.id.depositButton);
         withdrawlAccountNumber = view.findViewById(R.id.withdrawlAccountNumber);
         withdrawAmount = view.findViewById(R.id.withdrawlAmount);
@@ -168,8 +168,14 @@ public class TransferFragment extends Fragment {
                 // whenever data at this location is updated.
                 if (dataSnapshot.exists()){
                     balance = (String) dataSnapshot.child("accountbalance").getValue();
-                    Double newBalance = Double.parseDouble(balance) - Double.parseDouble(withdrawAmount.getText().toString().trim());
-                    saveWithdraw(accountType,accountNumber,newBalance);
+                    if((Double.parseDouble(withdrawAmount.getText().toString().trim()) <= Double.parseDouble(balance)) && (Double.parseDouble(balance) >= 0) && (Double.parseDouble(withdrawAmount.getText().toString().trim()) >= 0)){
+                        Double newBalance = Double.parseDouble(balance) - Double.parseDouble(withdrawAmount.getText().toString().trim());
+                        saveWithdraw(accountType,accountNumber,newBalance);
+                    }
+                    else{
+                        showAlert("ERROR","Cannot perform the action. Please compare the amount with the balance.",getContext());
+                    }
+
 
                 }
                 else{
@@ -199,8 +205,8 @@ public class TransferFragment extends Fragment {
         if(depositAccountNumber.getText().toString().trim().length() == 0){
             depositAccountNumber.setError(getString(R.string.thisFieldShouldNotBeEmpty));
         }
-        else if(depositAmout.getText().toString().trim().length() == 0){
-            depositAmout.setError(getString(R.string.thisFieldShouldNotBeEmpty));
+        else if(depositAmount.getText().toString().trim().length() == 0){
+            depositAmount.setError(getString(R.string.thisFieldShouldNotBeEmpty));
         }
         else {
             depositGetAccountType();
@@ -256,12 +262,16 @@ public class TransferFragment extends Fragment {
                 // whenever data at this location is updated.
                 if (dataSnapshot.exists()){
                     balance = (String) dataSnapshot.child("accountbalance").getValue();
-                    Double newBalance = Double.parseDouble(balance) + Double.parseDouble(depositAmout.getText().toString().trim());
-                    saveDeposit(accountType,accountNumber,newBalance);
-
+                    if((Double.parseDouble(depositAmount.getText().toString().trim()) <= Double.parseDouble(balance)) && (Double.parseDouble(balance) >= 0) && (Double.parseDouble(depositAmount.getText().toString().trim()) >= 0)){
+                        Double newBalance = Double.parseDouble(balance) + Double.parseDouble(depositAmount.getText().toString().trim());
+                        saveDeposit(accountType,accountNumber,newBalance);
+                    }
+                    else{
+                        showAlert("ERROR","Cannot perform the action. Please compare the amount with the balance.",getContext());
+                    }
                 }
                 else{
-                    showAlertWhenSuccess("ERROR","No customer record found associated with the account number ",getContext());
+                    showAlert("ERROR","No customer record found associated with the account number ",getContext());
                 }
             }
 
@@ -275,7 +285,7 @@ public class TransferFragment extends Fragment {
     private void saveDeposit(String accountType,String accountNumber,Double newBalance){
         depositRef = database.getReference("bank").child(accountType);
         depositRef.child(accountNumber).child("accountbalance").setValue(""+newBalance);
-        showAlert("SUCCESS","Deposited Successfully. New Balance is "+newBalance,getContext());
+        showAlertWhenSuccess("SUCCESS","Deposited Successfully. New Balance is "+newBalance,getContext());
     }
 
     //End of Deposit functions

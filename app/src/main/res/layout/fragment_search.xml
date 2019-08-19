@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="User Details"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:gravity="center"
             android:id="@+id/headingUserDetails"
             android:textStyle="bold"
@@ -98,82 +98,76 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:id="@+id/customerName"
-            android:gravity="center"/>
+            android:layout_marginStart="30dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Address : "
             android:layout_below="@id/customerName"
-            android:layout_marginTop="20dp"
-            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:id="@+id/customerAddress"
-            android:gravity="center"/>
+            android:layout_marginStart="30dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Birth Date : "
             android:layout_below="@id/customerAddress"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/white"
-            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:id="@+id/customerBirthDate"
-            android:gravity="center"/>
-
+            android:layout_marginStart="30dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email ID : "
             android:layout_below="@id/customerBirthDate"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/white"
-            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:id="@+id/customerEmailId"
-            android:gravity="center"/>
+            android:layout_marginStart="30dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contact Number : "
             android:layout_below="@id/customerEmailId"
-            android:layout_marginTop="20dp"
-            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:id="@+id/customerContactNumber"
-            android:gravity="center"/>
+            android:layout_marginStart="30dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customer Contact Number : "
             android:layout_below="@id/customerContactNumber"
-            android:layout_marginTop="20dp"
-            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:id="@+id/customerPhotoAddressIdProof"
-            android:gravity="center"/>
-
+            android:layout_marginStart="30dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Account Balance : "
             android:layout_below="@id/customerPhotoAddressIdProof"
-            android:layout_marginTop="20dp"
-            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:id="@+id/customerAccountBalance"
-            android:gravity="center"/>
-
+            android:layout_marginStart="30dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bank Branch : "
             android:layout_below="@id/customerAccountBalance"
-            android:layout_marginTop="20dp"
-            android:textSize="25sp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:id="@+id/customerBankBranch"
-            android:gravity="center"/>
-
+            android:layout_marginStart="30dp"/>
 
     </RelativeLayout>
     </ScrollView>
