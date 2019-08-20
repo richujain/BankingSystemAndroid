@@ -24,8 +24,14 @@ public class ContactUs extends AppCompatActivity {
         tvAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("geo:43.887501,79.428406?z=16"));
+
+
+
+
+                //Intent intent = new Intent(Intent.ACTION_VIEW);
+                //intent.setData(Uri.parse("geo:43.887501,79.428406?z=16"));
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("geo:0,0?q="+"43.653908"+",-79.384293"));
+                startActivity(intent);
                 if (intent.resolveActivity(ContactUs.this.getPackageManager()) != null) {
                     startActivity(intent);
                 }
