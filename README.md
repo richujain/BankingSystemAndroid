@@ -4,9 +4,9 @@
 
 |1 | <img src="https://user-images.githubusercontent.com/34774248/63296001-0ff65780-c29c-11e9-93c4-5e82b8642334.png" width="250"/> Splash Screen|
 
-2 | <img src="https://user-images.githubusercontent.com/34774248/63295422-a164ca00-c29a-11e9-9abe-ea957f31b845.png" width="250"/> | User Login Page
+|2 | <img src="https://user-images.githubusercontent.com/34774248/63295422-a164ca00-c29a-11e9-9abe-ea957f31b845.png" width="250"/> | User Login Page
 
-3 | <img src="https://user-images.githubusercontent.com/34774248/63295421-a164ca00-c29a-11e9-89d0-08edc62aff38.png" width="250"/> | Add User Fragment Page
+|3 | <img src="https://user-images.githubusercontent.com/34774248/63295421-a164ca00-c29a-11e9-89d0-08edc62aff38.png" width="250"/> | Add User Fragment Page
 
 4 | <img src="https://user-images.githubusercontent.com/34774248/63295423-a164ca00-c29a-11e9-8a2a-6eb6a007ad09.png" width="250"/> | Search Customer
 
