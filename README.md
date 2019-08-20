@@ -1,7 +1,6 @@
 # BankingSystemAndroid
 | SL No     | Image      | Description |
 
-SL|                              Image                                                                 | Description
 1 | <img src="https://user-images.githubusercontent.com/34774248/63296001-0ff65780-c29c-11e9-93c4-5e82b8642334.png" width="250"/> | Splash Screen
 
 1 | <img src="https://user-images.githubusercontent.com/34774248/63296001-0ff65780-c29c-11e9-93c4-5e82b8642334.png" width="250"/> | Splash Screen
