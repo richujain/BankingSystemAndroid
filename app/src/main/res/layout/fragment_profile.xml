@@ -12,31 +12,31 @@
         android:layout_marginBottom="50dp"
         android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/headingTextView"
-        android:text="Profile"
-        android:gravity="center"
-        android:textSize="50sp"
-        android:layout_marginTop="50dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-<!--
-    <com.pkmmte.view.CircularImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:src="@drawable/logo"
-        android:layout_below="@+id/headingTextView"
-        android:layout_marginTop="30dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        app:border="true"
-        android:background="@android:color/transparent"
-        app:border_color="#EEEEEE"
-        android:id="@+id/profilePicture"
-        app:border_width="4dp"
-        app:shadow="true" />
--->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/headingTextView"
+            android:text="Profile"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:layout_marginTop="50dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        <!--
+            <com.pkmmte.view.CircularImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/logo"
+                android:layout_below="@+id/headingTextView"
+                android:layout_marginTop="30dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                app:border="true"
+                android:background="@android:color/transparent"
+                app:border_color="#EEEEEE"
+                android:id="@+id/profilePicture"
+                app:border_width="4dp"
+                app:shadow="true" />
+        -->
 
 
         <Button
@@ -53,6 +53,21 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView2"
+            android:layout_above="@id/logoutUser"
+            android:id="@+id/logindetailsList"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_below="@id/headingTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:text="Last Login Details" />
 
 
     </RelativeLayout>

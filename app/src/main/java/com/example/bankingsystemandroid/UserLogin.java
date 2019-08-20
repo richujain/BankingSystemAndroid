@@ -2,6 +2,7 @@ package com.example.bankingsystemandroid;
 
 import android.Manifest;
 import android.app.KeyguardManager;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,8 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,7 +30,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class UserLogin extends AppCompatActivity {
+
+    private ArrayAdapter myAdapter;
+
+    private LoginTimeDetailsManager loginTimeDetailsManager;
+    private final static String TABLE_NAME = "AndroidLoginDetails";
+    //sql string to create the table
+    private static final String tableCreatorString =
+            "CREATE TABLE "+ TABLE_NAME + " (id text primary key, loginTime text);";
 
 
     private FirebaseAuth mAuth;
@@ -48,6 +62,22 @@ public class UserLogin extends AppCompatActivity {
         setContentView(R.layout.activity_user_login);
         mAuth = FirebaseAuth.getInstance();
         init();
+
+
+
+        try {
+            loginTimeDetailsManager = new LoginTimeDetailsManager(this);
+            //create the table
+            loginTimeDetailsManager.dbInitialize(TABLE_NAME, tableCreatorString);
+        }
+        catch(Exception exception)
+        {
+            Toast.makeText(UserLogin.this,
+                    exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+        }
+
+
 
         loginCheck();
         if(FirebaseAuth.getInstance().getCurrentUser() != null){
@@ -119,6 +149,7 @@ public class UserLogin extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
+                                        addLogindetails();
                                         startActivity(intent);
                                         finish();
                                         //updateUI(user);
@@ -191,6 +222,39 @@ public class UserLogin extends AppCompatActivity {
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
+
+
+
+
+
+    public void addLogindetails()
+    {
+        //read values for text fields
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+        String currentDateandTime = sdf.format(new Date());
+
+        //initialize ContentValues object with the new student
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("id",currentDateandTime);
+        contentValues.put("loginTime",currentDateandTime);
+
+        //
+        try {
+            loginTimeDetailsManager.addRecord(contentValues);
+        }
+        catch(Exception exception)
+        {
+            //
+            Toast.makeText(UserLogin.this,
+                    exception.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Error: ",exception.getMessage());
+
+        }
+
+
+    }
+
 
 
     /*
