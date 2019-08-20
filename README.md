@@ -1,6 +1,6 @@
 # BankingSystemAndroid
-| SL No      | Image       | Description |
-|------------|-------------|-------------|  
+| SL No                | Image                     | Description |
+|----------------------|---------------------------|-------------|  
 
 1 | <img src="https://user-images.githubusercontent.com/34774248/63296001-0ff65780-c29c-11e9-93c4-5e82b8642334.png" width="250"/> | Splash Screen
 
@@ -51,7 +51,7 @@
 
 6 | <img src="https://user-images.githubusercontent.com/34774248/63296309-d70ab280-c29c-11e9-9a7c-1104572cb71b.png" width="250"/> | Deposit
 
-7 | <img src="https://user-images.githubusercontent.com/34774248/63296310-d7a34900-c29c-11e9-9a84-ff1b84ae1640.png" width="250"/> | Withdrawl
+7 | <img src="https://user-images.githubusercontent.com/34774248/63296310-d7a34900-c29c-11e9-9a84-ff1b84ae1640.png" width="250"/> | Withdrawl|------------|-------------|-------------|  
 
 8 | <img src="https://user-images.githubusercontent.com/34774248/63296311-d7a34900-c29c-11e9-9151-98e3ed41abe8.png" width="250"/> | Transfer
 
